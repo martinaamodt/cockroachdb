@@ -1,8 +1,0 @@
----
-base_windows::win_sw_pkg:
-          - 'notepadplusplus'
-          - 'git'
-base_linux::linux_sw_pkg:
-          - 'htop'
-          - 'sysstat'
-          - 'vim'
