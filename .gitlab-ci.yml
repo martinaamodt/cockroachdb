@@ -39,17 +39,3 @@ parallel_spec-Ruby 2.4.5-Puppet ~> 5:
   variables:
     PUPPET_GEM_VERSION: '~> 5'
 
-deploy:
-  stage: deploy
-  provider: puppetforge
-  user: neckbeards
-  password:
-    secure: $FORGEPASSWD
-  only:
-    refs:
-      - master
-  # on:
-    # tags: true
-    # all_branches is required to use tags
-    # all_branches: true
-
