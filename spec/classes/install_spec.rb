@@ -4,7 +4,7 @@ describe 'cockroachdb::install' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
-      let(:node_params) { { 'cockroachdb::dependecies' => 'tar','wget' } }
+      let(:pre_condition) { 'cockroachdb' }
 
       it { is_expected.to compile }
     end
