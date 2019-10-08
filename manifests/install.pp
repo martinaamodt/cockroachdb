@@ -19,10 +19,28 @@ class cockroachdb::install {
     before            => File['/usr/local/bin/cockroach'],
   }
 
-  file { '/usr/local/bin/cockroach':
-    ensure => present,
-    source => '/tmp/cockroach-v19.1.5.linux-amd64/cockroach',
-    mode   => '0755'
+  file {'/home/cockroach':
+    ensure => directory,
+    before => User['cockroach'],
   }
 
+  user { 'cockroach':
+    ensure => present,
+    home   => '/home/cockroach',
+    shell  => '/bin/bash',
+    before => File['/usr/local/bin/cockroach'],
+  }
+
+  file { '/usr/local/bin/cockroach':
+    ensure  => present,
+    source  => '/tmp/cockroach-v19.1.5.linux-amd64/cockroach',
+    mode    => '0755',
+    require => User['cockroach'],
+  }
+
+  file {'/var/lib/cockroach':
+    ensure  => directory,
+    owner   => 'cockroach',
+    require => User['cockroach'],
+  }
 }
