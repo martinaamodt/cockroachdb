@@ -7,5 +7,5 @@
 class cockroachdb(
   Tuple $dependencies
 ){
-  contain cockroachdb::install 
+  contain cockroachdb::install
 }
