@@ -5,23 +5,23 @@
 # @example
 #   include cockroachdb::config
 class cockroachdb::config {
-  $defaults = { 'path' => '/etc/systemd/system/insecurecockroachdb.service' }
+  $defaults = { 'path' => $cockroachdb::servicepath }
   $settings = {
     'Unit' => {
-      'Description' => 'Cockroach Database cluster node',
+      'Description' => $cockroachdb::description,
       'Requires'    => 'network.target',
     },
     'Service' => {
       'Type'             => 'notify',
-      'WorkingDirectory' => '/var/lib/cockroach',
-      'ExecStart'        => '/usr/local/bin/cockroach start --insecure --advertise-addr=<node1 address> --join=<node1 address>,<node2 address>,<node3 address> --cache=.25 --max-sql-memory=.25',
-      'TimeoutStopSec'   => '60',
-      'Restart'          => 'always',
-      'RestartSec'       => '10',
-      'StandardOutput'   => 'syslog',
-      'StandardError'    => 'syslog',
-      'SyslogIdentifier' => 'cockroach',
-      'User'             => 'cockroach',
+      'WorkingDirectory' => $cockroachdb::workingdirectory,
+      'ExecStart'        => "/usr/local/bin/cockroach start --insecure --advertise-addr=${cockroachdb::node1ip} --join=${cockroachdb::node1ip},${cockroachdb::node2ip},${cockroachdb::node3ip} --cache=${cockroachdb::cache} --max-sql-memory=${cockroachdb::maxsqlmemory}",
+      'TimeoutStopSec'   => $cockroachdb::timeoutstopsec,
+      'Restart'          => $cockroachdb::restart,
+      'RestartSec'       => $cockroachdb::restartsec,
+      'StandardOutput'   => $cockroachdb::standardoutput,
+      'StandardError'    => $cockroachdb::standarderror,
+      'SyslogIdentifier' => $cockroachdb::syslogidentifier,
+      'User'             => $cockroachdb::user,
     },
     'Install' => {
       'WantedBy' => 'default.target'
