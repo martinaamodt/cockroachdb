@@ -1,1 +1,2 @@
 ---
+cockroachdb::dependencies: ["tar","wget"]
