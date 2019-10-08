@@ -8,4 +8,6 @@ class cockroachdb(
   Tuple $dependencies
 ){
   contain cockroachdb::install
+  contain cockroachdb::config
+  Class['::cockroachdb::install'] -> Class['::cockroachdb::config']
 }
