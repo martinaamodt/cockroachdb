@@ -5,7 +5,7 @@
 # @example
 #   include cockroachdb::config
 class cockroachdb::config {
-  $defaults = { 'path' => "/etc/systemd/system/insecurecocroachdb.service" }
+  $defaults = { 'path' => '/etc/systemd/system/insecurecocroachdb.service' }
   $settings = {
     'Unit' => {
       'Description' => 'Cockroach Database cluster node',
@@ -25,7 +25,7 @@ class cockroachdb::config {
     },
     'Install' => {
       'WantedBy' => 'default.target'
-     },
-   }
-  create_ini_settings($settings, $defaults) 
+      },
+    }
+  create_ini_settings($settings, $defaults)
 }

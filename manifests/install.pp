@@ -22,14 +22,14 @@ class cockroachdb::install {
   file {'/home/cockroach':
     ensure => directory,
     before => User['cockroach'],
-  } 
-   
+  }
+
   user { 'cockroach':
     ensure => present,
     home   => '/home/cockroach',
     shell  => '/bin/bash',
     before => File['/usr/local/bin/cockroach'],
-   } 
+  }
 
   file { '/usr/local/bin/cockroach':
     ensure  => present,
@@ -42,5 +42,5 @@ class cockroachdb::install {
     ensure  => directory,
     owner   => 'cockroach',
     require => User['cockroach'],
-  } 
+  }
 }
