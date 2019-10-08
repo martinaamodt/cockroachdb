@@ -1,2 +1,17 @@
 ---
 cockroachdb::dependencies: ["tar","wget"]
+cockroachdb::servicepath: '/etc/systemd/system/insecurecockroachdb.service'
+cockroachdb::description: 'Cockroach Database cluster node'
+cockroachdb::workingdirectory: '/var/lib/cockroach'
+cockroachdb::node1ip: '127.0.0.1'
+cockroachdb::node2ip: '127.0.0.1'
+cockroachdb::node3ip: '127.0.0.1'
+cockroachdb::cache: '.25'
+cockroachdb::maxsqlmemory: '.25'
+cockroachdb::timeoutstopsec: '60'
+cockroachdb::restart: 'always'
+cockroachdb::restartsec: '10'
+cockroachdb::standardoutput: 'syslog'
+cockroachdb::standarderror: 'syslog'
+cockroachdb::syslogidentifier: 'cockroach'
+cockroachdb::user: 'cockroach'
