@@ -4,5 +4,8 @@
 #
 # @example
 #   include cockroachdb
-class cockroachdb {
+class cockroachdb(
+  Tuple $dependencies
+){
+  contain cockroachdb::install 
 }
