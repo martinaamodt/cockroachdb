@@ -6,9 +6,11 @@
 #   include cockroachdb
 class cockroachdb(
   Tuple $dependencies,
-  Stdlib::Absolutepath $servicepath,
+  #Stdlib::Absolutepath $servicepath,
+  String $servicepath,
   String $description,
-  Stdlib::Absolutepath $workingdirectory,
+  #Stdlib::Absolutepath $workingdirectory,
+  String $workingdirectory,
   String $cache,
   String $maxsqlmemory,
   String $timeoutstopsec,
