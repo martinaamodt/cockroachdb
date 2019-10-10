@@ -1,3 +1,4 @@
+## Autogen by pdk
 .git/
 .*.sw[op]
 .metadata
@@ -26,8 +27,9 @@
 .envrc
 /inventory.yaml
 
-# Created by https://www.gitignore.io/api/ruby,linux,puppet
-# Edit at https://www.gitignore.io/?templates=ruby,linux,puppet
+
+# Created by https://www.gitignore.io/api/ruby,linux,puppet,rubymine
+# Edit at https://www.gitignore.io/?templates=ruby,linux,puppet,rubymine
 
 ### Linux ###
 *~
