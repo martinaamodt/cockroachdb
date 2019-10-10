@@ -5,7 +5,28 @@
 # @example
 #   include cockroachdb
 class cockroachdb(
-  Tuple $dependencies
+  # Would prefer to use Stdlib::absolutepath version. But it fails test with Puppet5
+  #Stdlib::Absolutepath $servicepath,
+  String $servicepath,
+  #Stdlib::Absolutepath $workingdirectory,
+  String $workingdirectory,
+  # 
+  Tuple $dependencies,
+  String $description,
+  String $cache,
+  String $maxsqlmemory,
+  String $timeoutstopsec,
+  String $restart,
+  String $restartsec,
+  String $standardoutput,
+  String $standarderror,
+  String $syslogidentifier,
+  String $user,
+  String $node1ip,
+  String $node2ip,
+  String $node3ip,
 ){
   contain cockroachdb::install
+  contain cockroachdb::config
+  Class['::cockroachdb::install'] -> Class['::cockroachdb::config']
 }
