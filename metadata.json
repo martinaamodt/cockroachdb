@@ -1,16 +1,23 @@
 {
   "name": "neckbeards-cockroachdb",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Martin Aamodt, Zackeus Bengtsson, Joachim Winsnes",
-  "summary": "",
+  "summary": "WIP! cockroachdb module",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/martinaamodt/cockroachdb.git",
   "dependencies": [
-      {
-        "name": "dsestero-download_uncompress",
-        "version_requirement": "1.5.1"
-      }
-
+    {
+      "name": "dsestero-download_uncompress",
+      "version_requirement": "1.5.1"
+    },
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.13.1 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs-inifile",
+      "version_requirement": "3.1.0"
+    }
   ],
   "operatingsystem_support": [
     {
