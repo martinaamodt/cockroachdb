@@ -48,7 +48,8 @@ deploy:
 branches:
   only:
     - master
-    - /^v\d/
+    - /^v\d+(.\d+){2}$
+    - ^v\d+(.\d+){2}$
 notifications:
   email: false
 env:
