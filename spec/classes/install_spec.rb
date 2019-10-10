@@ -9,7 +9,6 @@ describe 'cockroachdb::install' do
       it { is_expected.to compile }
       it { is_expected.to contain_package('tar') }
       it { is_expected.to contain_package('wget') }
-    
     end
   end
 end
