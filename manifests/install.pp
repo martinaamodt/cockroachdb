@@ -18,5 +18,4 @@ class cockroachdb::install {
     uncompress        => 'tar.gz',
     before            => File['/usr/local/bin/cockroach'],
   }
-
- }
+}

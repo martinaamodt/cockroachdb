@@ -5,7 +5,7 @@
 # @example
 #   include cockroachdb::config
 class cockroachdb::config {
-   
+
   file {'/home/cockroach':
     ensure => directory,
     before => User['cockroach']
