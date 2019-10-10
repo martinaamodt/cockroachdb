@@ -1,6 +1,6 @@
 {
   "name": "neckbeards-cockroachdb",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Martin Aamodt, Zackeus Bengtsson, Joachim Winsnes",
   "summary": "WIP! cockroachdb module",
   "license": "Apache-2.0",
