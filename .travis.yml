@@ -41,12 +41,10 @@ deploy:
     tags: false
     # all_branches is required to use tags
     condition: "$DEPLOY_TO_FORGE = yes"
-  branches:
+ branches:
+  only:
   - master
-# branches:
-  # only:
-  #- master
-  # - "/^v\\d/"
+  - "/^v\\d/"
 notifications:
   email: false
 env:
