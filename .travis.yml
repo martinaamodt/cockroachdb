@@ -18,7 +18,7 @@ stages:
   - spec
   - acceptance
   -
-    if: tag =~  v\d+.\d+.\d+
+    if: tag =~  ^v\d+(.\d+){2}$ 
     name: deploy
 matrix:
   fast_finish: true
@@ -44,8 +44,6 @@ deploy:
   password:
     secure: "$PUPPETPASS"
   on:
-    tags: true
-    # all_branches is required to use tags
     condition: "$DEPLOY_TO_FORGE = yes"
 branches:
   only:
