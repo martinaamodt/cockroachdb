@@ -32,9 +32,9 @@ class cockroachdb::config {
     'Service' => {
       'Type'             => 'notify',
       'WorkingDirectory' => $cockroachdb::workingdirectory,
-      'ExecStart'        => "/usr/local/bin/cockroach start --insecure --advertise-addr=${::ipaddress} --join= \
-        ${cockroachdb::node1ip},${cockroachdb::node2ip},${cockroachdb::node3ip} --cache=${cockroachdb::cache} \
-         --max-sql-memory=${cockroachdb::maxsqlmemory}",
+      'ExecStart'        => "/usr/local/bin/cockroach start --insecure --advertise-addr=${::ipaddress} --join=\
+${cockroachdb::node1ip},${cockroachdb::node2ip},${cockroachdb::node3ip} --cache=${cockroachdb::cache} \
+--max-sql-memory=${cockroachdb::maxsqlmemory}",
       'TimeoutStopSec'   => $cockroachdb::timeoutstopsec,
       'Restart'          => $cockroachdb::restart,
       'RestartSec'       => $cockroachdb::restartsec,
