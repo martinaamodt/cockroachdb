@@ -1,57 +1,52 @@
----
 dist: xenial
 language: ruby
 cache: bundler
 before_install:
-  - bundle -v
-  - rm -f Gemfile.lock
-  - gem update --system $RUBYGEMS_VERSION
-  - gem --version
-  - bundle -v
+- bundle -v
+- rm -f Gemfile.lock
+- gem update --system $RUBYGEMS_VERSION
+- gem --version
+- bundle -v
 script:
-  - 'bundle exec rake $CHECK'
-bundler_args: --without system_tests
+- bundle exec rake $CHECK
+bundler_args: "--without system_tests"
 rvm:
-  - 2.5.3
+- 2.5.3
 stages:
-  - static
-  - spec
-  - acceptance
-  -
-    if: tag =~  ^v\d+(.\d+){2}$ 
-    name: deploy
+- static
+- spec
+- acceptance
+- if: tag =~  ^v\d+(.\d+){2}$
+  name: deploy
 matrix:
   fast_finish: true
   include:
-    -
-      env: CHECK="check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint"
-      stage: static
-    -
-      env: PUPPET_GEM_VERSION="~> 5.0" CHECK=parallel_spec
-      rvm: 2.4.5
-      stage: spec
-    -
-      env: PUPPET_GEM_VERSION="~> 6.0" CHECK=parallel_spec
-      rvm: 2.5.3
-      stage: spec
-    -
-      env: DEPLOY_TO_FORGE=yes
-      stage: deploy
+  - env: CHECK="check:symlinks check:git_ignore check:dot_underscore check:test_file
+      rubocop syntax lint metadata_lint"
+    stage: static
+  - env: PUPPET_GEM_VERSION="~> 5.0" CHECK=parallel_spec
+    rvm: 2.4.5
+    stage: spec
+  - env: PUPPET_GEM_VERSION="~> 6.0" CHECK=parallel_spec
+    rvm: 2.5.3
+    stage: spec
+  - env: DEPLOY_TO_FORGE=yes
+    stage: deploy
 deploy:
   stage: deploy
   provider: puppetforge
-  user: "neckbeards"
+  user: neckbeards
   password:
-    secure: "$PUPPETPASS"
+    secure: "$PASS"
   on:
     condition: "$DEPLOY_TO_FORGE = yes"
 branches:
   only:
-    - master
-    - /^v\d+(.\d+){2}$
-    - ^v\d+(.\d+){2}$
+  - master
+  - "/^v\\d+(.\\d+){2}$"
+  - "^v\\d+(.\\d+){2}$"
 notifications:
   email: false
 env:
   global:
-    secure: iR8Kk/DDkc/FR2zRZAe3wOKgMrClvbCbF+WzOszO3F9+/g4ieNad97gx1bmdZ97/D3PhBQeKzgsbbTtisnj60/4XWlmNiRklovDloO4LU5HlhdM1xIe+TmYoWH6Tibu2s4Wya7P9U5/OPnqujnF4JMHf8hIzJMHmyHuT+1yfvzX7tIKN5mi3rYeRJ66UU+CFbh85MNKOAXdKy/NYpeyvq90sOG37f4woEVb7rRd3zu2DsGwz05tcvLWd8AgW4nf5Qmm+xyzCWDl50zGy5g5wQSORPSUIpIqgKcTjrXxX8r6Hi4u5GjPUw1C8PFMJ2YFH/v0JVrwl8/YsQ8XhPiuhk+CObi50FXq/4eLikFr7OY3/hvChZjDcsHAIscok4ZGY4BtLzMD5ygBpuE8CkT/RxSe5NRmcyk/A0QRx7ymePaYSWTpReG8zaFrX++yE5uwWE5zOooEAWwEh8fMvolFMBCA7sauUlxF9/MRmcx3qmFqbSyLMhs3ogDLSfKMjwDJtu5xqV1WZ/b7ldIgNT7v9RVFKU0+d8h0FToOBDKD0SOeTvb+yDbaxoyzWDQ/zIefmPBvOw+RGcsuqlJuSacyXtlCzQUlSvEE85hqq7IO+UHrKTymIVdebsJSGb1AFKV7t652EAGzet5Fb+hxOe5kj3LXYKnGZE4ZqlogdN3WaK7w=
+    secure: MzXetXfnGa85PmKFMTRDg9RSbqn4IskEoCieuryIEVT8RGO72/b8RB+2DZYHrQfNUrShVtmz+4zMnrsKIuy+LGL5eMvuTHWBk7FhAT5tAJErYUssg5t/gRmAFnektVmt7RKLjCMb6boSuJhorPSGi8hZyZpcVUmbVP9PRI8DhJfmBlzMlsa2//keWL1QVMphtpQw/LpqJkxpiQkasiNJID5MWW605TJlZvk2cjiy9/wn6m3Wrn34DOhgdVn9OAlBa0JivmgPCZmmHX6y1vAMThpUgBoLl/JetSV23wb3UJYGSyFj+wIs6TKCm8mxrh/vFiooX64562fxWJwEU//HHNV4gIV+NQ6mV4GqBJBgvTdqB9MGwpuVSDq5auTl6P1AqQLMKJDulI1IMIgESiLt6O8ygp+yieqXHJHgImVNdFD4Qv5HZzXNDvUtxWwzAUbOCKm4xA6NOwY9CEmsgCieQT40R30u+dQC84QCncdvEkojeKT8ie0TprYoRIcGye4BFKGZ9jhvgTr/LVxasPFa/zoEZr0CzFFCCLWPCgJFSaG9l6rSsTkuYwDDfrOtehg+yohf4QZilFGLfXq7VwMqbbHhG6c7nnB/I1WvpZYcS2BOgPNXav9+npvCStUuk7eEvFuTuyVvPULUgbRvVj1c8lDO4BVjzPHLKAcPW9uKVtw=
