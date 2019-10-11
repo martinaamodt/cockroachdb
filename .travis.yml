@@ -16,8 +16,7 @@ stages:
 - static
 - spec
 - acceptance
-- if: tag =~  ^v\d+(.\d+){2}$
-  name: deploy
+- deploy
 matrix:
   fast_finish: true
   include:
