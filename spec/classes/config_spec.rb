@@ -8,6 +8,11 @@ describe 'cockroachdb::config' do
 
       it { is_expected.to compile }
       it { is_expected.to contain_file('/var/lib/cockroach').without_mode }
+      it { is_expected.to contain_service('insecurecockroachdb')
+        .with(
+          :ensure => 'running',
+        )
+      }
     end
   end
 end
