@@ -13,7 +13,7 @@ class cockroachdb::install {
 
   $package_name = 'cockroachdb'
   $repository_url = 'https://binaries.cockroachdb.com'
-  $archive_name = "${package_name}-${package_ensure}.tgz"
+  $archive_name = "${package_name}-${cockroachdb::package_ensure}.tgz"
   $cockroachdb_package_source = "${repository_url}/${archive_name}"
 
   archive { $cockroachdb::archive_name:
