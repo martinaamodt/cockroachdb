@@ -11,14 +11,12 @@ class cockroachdb::install {
     before   => Archive[$cockroachdb::archive_name],
   }
 
-
-
   archive { $cockroachdb::archive_name:
-    path         => "/tmp/${archive_name}",
-    source       => $cockroachdb_package_source,
+    path         => "/tmp/${cockroachdb::archive_name}",
+    source       => $cockroachdb::cockroachdb_package_source,
     extract      => true,
     extract_path => $cockroachdb::install_path,
-    creates      => "${cockroachdb::install_path}/${package_name}",
+    creates      => "${cockroachdb::install_path}/${cockroachdb::package_name}",
     cleanup      => true,
   }
 
