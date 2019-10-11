@@ -13,11 +13,10 @@ bundler_args: "--without system_tests"
 rvm:
   - 2.5.3
 stages:
-  - static
-  - spec
-  - acceptance
-  - if: tag =~  ^v\d+(.\d+){2}$
-    name: deploy
+- static
+- spec
+- acceptance
+- deploy
 matrix:
   fast_finish: true
   include:
