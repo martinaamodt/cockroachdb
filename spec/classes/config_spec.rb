@@ -7,7 +7,6 @@ describe 'cockroachdb::config' do
       let(:pre_condition) { 'include cockroachdb' }
 
       it { is_expected.to compile }
-      it { is_expected.to contain_file('/usr/local/bin/cockroach').with_mode('0755') }
       it { is_expected.to contain_file('/var/lib/cockroach').without_mode }
     end
   end
