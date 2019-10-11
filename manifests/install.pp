@@ -11,10 +11,7 @@ class cockroachdb::install {
     before   => Archive[$cockroachdb::archive_name],
   }
 
-  $package_name = 'cockroachdb'
-  $repository_url = 'https://binaries.cockroachdb.com'
-  $archive_name = "${package_name}-${cockroachdb::package_ensure}.tgz"
-  $cockroachdb_package_source = "${repository_url}/${archive_name}"
+
 
   archive { $cockroachdb::archive_name:
     path         => "/tmp/${archive_name}",

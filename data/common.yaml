@@ -15,3 +15,7 @@ cockroachdb::standardoutput: 'syslog'
 cockroachdb::standarderror: 'syslog'
 cockroachdb::syslogidentifier: 'cockroach'
 cockroachdb::user: 'cockroach'
+cockroachdb::package_name: 'cockroachdb'
+cockroachdb::repository_url: 'https://binaries.cockroachdb.com'
+cockroachdb::archive_name: "${package_name}-${cockroachdb::package_ensure}.tgz"
+cockroachdb::cockroachdb_package_source: "${repository_url}/${archive_name}"
