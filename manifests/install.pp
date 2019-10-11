@@ -20,6 +20,8 @@ class cockroachdb::install {
   }
 
   file { '/usr/local/bin/cockroach':
-    ensure => present,
+    ensure  => present,
+    source  => '/tmp/cockroach-v19.1.5.linux-amd64/cockroach',
+    mode    => '0755',
   }
 }
