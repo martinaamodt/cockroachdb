@@ -1,6 +1,6 @@
 ---
 cockroachdb::dependencies: ["tar","wget"]
-cockroachdb::servicepath: '/etc/systemd/system/insecurecockroachdb.service'
+cockroachdb::servicepath: '/etc/systemd/system/'
 cockroachdb::description: 'Cockroach Database cluster node'
 cockroachdb::workingdirectory: '/var/lib/cockroach'
 cockroachdb::node1ip: '127.0.0.1'

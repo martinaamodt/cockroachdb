@@ -23,7 +23,7 @@ class cockroachdb::config {
     require => User['cockroach'],
   }
 
-  $defaults = { 'path' => $cockroachdb::servicepath }
+  $defaults = { 'path' => "${cockroachdb::servicepath}/insecurecockroachdb.service" }
   $settings = {
     'Unit'    => {
       'Description' => $cockroachdb::description,
@@ -48,4 +48,8 @@ class cockroachdb::config {
     },
   }
   create_ini_settings($settings, $defaults)
+
+  service { 'insecurecockroachdb':
+    ensure => 'running',
+  }
 }
