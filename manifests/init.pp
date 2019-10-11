@@ -25,6 +25,15 @@ class cockroachdb(
   String $node1ip,
   String $node2ip,
   String $node3ip,
+
+  #Archive
+  String $install_path,
+  String $package_name,
+  String $package_ensure,
+  String $repository_url,
+  String $archive_name,
+  String $cockroach_archive_source,
+
 ){
   contain cockroachdb::install
   contain cockroachdb::config
