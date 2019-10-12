@@ -23,31 +23,11 @@ class cockroachdb::config {
     require => User['cockroach'],
   }
 
-  $defaults = { 'path' => "${cockroachdb::servicepath}/insecurecockroachdb.service" }
-  $settings = {
-    'Unit'    => {
-      'Description' => $cockroachdb::description,
-      'Requires'    => 'network.target',
-    },
-    'Service' => {
-      'Type'             => 'notify',
-      'WorkingDirectory' => $cockroachdb::workingdirectory,
-      'ExecStart'        => "/usr/local/bin/cockroach start --insecure --advertise-addr=${::ipaddress} --join=\
-${cockroachdb::node1ip},${cockroachdb::node2ip},${cockroachdb::node3ip} --cache=${cockroachdb::cache} \
---max-sql-memory=${cockroachdb::maxsqlmemory}",
-      'TimeoutStopSec'   => $cockroachdb::timeoutstopsec,
-      'Restart'          => $cockroachdb::restart,
-      'RestartSec'       => $cockroachdb::restartsec,
-      'StandardOutput'   => $cockroachdb::standardoutput,
-      'StandardError'    => $cockroachdb::standarderror,
-      'SyslogIdentifier' => $cockroachdb::syslogidentifier,
-      'User'             => $cockroachdb::user,
-    },
-    'Install' => {
-      'WantedBy' => 'default.target'
-    },
+  file { '/etc/systemd/system/insecurecockroachdb.service':
+    ensure  => file,
+    content => epp('cockroachdb/insecurecockroachdb.service.epp' ),
+    notify  => Service['insecurecockroachdb'],
   }
-  create_ini_settings($settings, $defaults)
 
   service { 'insecurecockroachdb':
     ensure => 'running',

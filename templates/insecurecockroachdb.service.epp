@@ -1,0 +1,34 @@
+<%- | $cockroachdb::node1ip,
+  $cockroachdb::description,
+  $cockroachdb::workingdirectory,
+  $cockroachdb::node2ip,
+  $cockroachdb::node3ip,
+  $cockroachdb::cache,
+  $cockroachdb::maxsqlmemory,
+  $cockroachdb::timeoutstopsec,
+  $cockroachdb::restart,
+  $cockroachdb::restartsec,
+  $cockroachdb::standardoutput,
+  $cockroachdb::standarderror,
+  $cockroachdb::syslogidentifier,
+  $cockroachdb::user,
+| -%>
+
+[Unit]
+Description = <%= $cockroachdb::description %>
+Requires = network.target
+
+[Service]
+Type = notify
+WorkingDirectory = <%= $cockroachdb::workingdirectory %>
+ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> --join=<%= $cockroachdb::node1ip %>,<%= $cockroachdb::node2ip %>, <%= $cockroachdb::node3ip %> --cache=<%= $cockroachdb::cache %> --max-sql-memory=<%= $cockroachdb::maxsqlmemory %>
+TimeoutStopSec = <%= $cockroachdb::timeoutstopsec %>
+Restart = <%= $cockroachdb::restart %>
+RestartSec = <%= $cockroachdb::restartsec %>
+StandardOutput = <%= $cockroachdb::standardoutput %>
+StandardError = <%= $cockroachdb::standarderror %>
+SyslogIdentifier = <%= $cockroachdb::syslogidentifier %>
+User = <%= $cockroachdb::user %>
+
+[Install]
+WantedBy = default.target
