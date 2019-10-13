@@ -23,31 +23,28 @@ class cockroachdb::config {
     require => User['cockroach'],
   }
 
-  $defaults = { 'path' => "${cockroachdb::servicepath}/insecurecockroachdb.service" }
-  $settings = {
-    'Unit'    => {
-      'Description' => $cockroachdb::description,
-      'Requires'    => 'network.target',
-    },
-    'Service' => {
-      'Type'             => 'notify',
-      'WorkingDirectory' => $cockroachdb::workingdirectory,
-      'ExecStart'        => "/usr/local/bin/cockroach start --insecure --advertise-addr=${::ipaddress} --join=\
-${cockroachdb::node1ip},${cockroachdb::node2ip},${cockroachdb::node3ip} --cache=${cockroachdb::cache} \
---max-sql-memory=${cockroachdb::maxsqlmemory}",
-      'TimeoutStopSec'   => $cockroachdb::timeoutstopsec,
-      'Restart'          => $cockroachdb::restart,
-      'RestartSec'       => $cockroachdb::restartsec,
-      'StandardOutput'   => $cockroachdb::standardoutput,
-      'StandardError'    => $cockroachdb::standarderror,
-      'SyslogIdentifier' => $cockroachdb::syslogidentifier,
-      'User'             => $cockroachdb::user,
-    },
-    'Install' => {
-      'WantedBy' => 'default.target'
-    },
+  $insecurecockroachdb_hash = {
+    'description'       => $cockroachdb::description,
+    'workingdirectory'  => $cockroachdb::workingdirectory,
+    'node1ip'           => $cockroachdb::node1ip,
+    'node2ip'           => $cockroachdb::node2ip,
+    'node3ip'           => $cockroachdb::node3ip,
+    'cache'             => $cockroachdb::cache,
+    'maxsqlmemory'      => $cockroachdb::maxsqlmemory,
+    'timeoutstopsec'    => $cockroachdb::timeoutstopsec,
+    'restart'           => $cockroachdb::restart,
+    'restartsec'        => $cockroachdb::restartsec,
+    'standardoutput'    => $cockroachdb::standardoutput,
+    'standarderror'     => $cockroachdb::standarderror,
+    'syslogidentifier'  => $cockroachdb::syslogidentifier,
+    'user'              => $cockroachdb::user,
   }
-  create_ini_settings($settings, $defaults)
+
+  file { '/etc/systemd/system/insecurecockroachdb.service':
+    ensure  => file,
+    content => epp('cockroachdb/insecurecockroachdb.service.epp', $insecurecockroachdb_hash ),
+    notify  => Service['insecurecockroachdb'],
+  }
 
   service { 'insecurecockroachdb':
     ensure => 'running',
