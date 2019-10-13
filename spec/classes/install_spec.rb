@@ -3,11 +3,11 @@ require 'spec_helper'
 describe 'cockroachdb::install' do
   let(:params) do
     {
-      install_path => '/usr/local/bin',
-      package_ensure => 'v19.1.5.linux-amd64',
-      node1ip => 'db0',
-      node2ip => 'db1',
-      node3ip => 'db2',
+      cockroachdb::install_path => '/usr/local/bin',
+      cockroachdb::package_ensure => 'v19.1.5.linux-amd64',
+      cockroachdb::node1ip => 'db0',
+      cockroachdb::node2ip => 'db1',
+      cockroachdb::node3ip => 'db2',
     }
   end
 
