@@ -16,8 +16,8 @@ describe 'cockroachdb::install' do
       let(:facts) { os_facts }
 
       it { is_expected.to compile }
-      #it { is_expected.to contain_package('tar') }
-      #it { is_expected.to contain_package('wget') }
+      # it { is_expected.to contain_package('tar') }
+      # it { is_expected.to contain_package('wget') }
     end
   end
 end
