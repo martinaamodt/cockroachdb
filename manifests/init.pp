@@ -34,7 +34,7 @@ class cockroachdb (
   Optional[String] $archive_name             = $cockroachdb::params::archive_name,
   Optional[String] $cockroach_archive_source = $cockroachdb::params::cockroachdb_package_source,
 
-) {
+) inherits cockroachdb::params {
   contain cockroachdb::install
   contain cockroachdb::config
   Class['::cockroachdb::install'] -> Class['::cockroachdb::config']
