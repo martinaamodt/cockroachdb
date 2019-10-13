@@ -5,7 +5,7 @@
 # @example
 #   include cockroachdb::install
 class cockroachdb::install {
- # package { $cockroachdb::dependencies:
+  # package { $cockroachdb::dependencies:
   # ensure   => installed,
   # provider => apt,
   # before   => Archive[$cockroachdb::archive_name],
