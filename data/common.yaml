@@ -17,5 +17,7 @@ cockroachdb::syslogidentifier: 'cockroach'
 cockroachdb::user: 'cockroach'
 cockroachdb::package_name: 'cockroachdb'
 cockroachdb::repository_url: 'https://binaries.cockroachdb.com'
-cockroachdb::archive_name: "${package_name}-${cockroachdb::package_ensure}.tgz"
-cockroachdb::cockroachdb_package_source: "${repository_url}/${archive_name}"
+cockraochdb::archive_name: 'cockroach-v19.1.5.linux-amd64.tgz'
+# cockroachdb::archive_name: "${package_name}-${cockroachdb::package_ensure}.tgz"
+# cockroachdb::cockroachdb_package_source: "${repository_url}/${archive_name}"
+cockroachdb::cockroachdb_package_source: 'https://binaries.cockroachdb.com/cockroach-v19.1.5.linux-amd64.tgz'
