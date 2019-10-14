@@ -37,5 +37,6 @@ class cockroachdb (
 ) inherits cockroachdb::params {
   contain cockroachdb::install
   contain cockroachdb::config
-  Class['::cockroachdb::install'] -> Class['::cockroachdb::config']
+  contain cockroachdb::service
+  Class['::cockroachdb::install'] -> Class['::cockroachdb::config'] -> Class['::cockroachdb::service']
 }
