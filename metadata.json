@@ -1,14 +1,15 @@
 {
   "name": "neckbeards-cockroachdb",
-  "version": "0.1.12",
+
+  "version": "0.1.13",
   "author": "Martin Aamodt, Zackeus Bengtsson, Joachim Winsnes",
   "summary": "WIP! cockroachdb module. Intended for testing",
   "license": "Apache-2.0",
   "source": "https://github.com/martinaamodt/cockroachdb.git",
   "dependencies": [
     {
-      "name": "dsestero-download_uncompress",
-      "version_requirement": "1.5.1"
+      "name": "puppet-archive",
+      "version_requirement": "4.2.0"
     },
     {
       "name": "puppetlabs-stdlib",
