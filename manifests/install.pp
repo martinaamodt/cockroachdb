@@ -18,12 +18,12 @@ class cockroachdb::install {
     extract_path => $cockroachdb::install_path,
     creates      => "${cockroachdb::install_path}/${cockroachdb::package_name}",
     cleanup      => true,
+    before       => File['/usr/local/bin/cockroach'],
   }
 
   file { '/usr/local/bin/cockroach':
     ensure => present,
     source => '/tmp/cockroach-v19.1.5.linux-amd64/cockroach',
     mode   => '0755',
-    after  => Archive[$cockroachdb::archive_name]
   }
 }
