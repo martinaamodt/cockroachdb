@@ -1,9 +1,8 @@
-# @summary A short summary of the purpose of this class
+# == Class cockroachdb::install
 #
-# A description of what this class does
+# This class is called from the the cockroachdb class for installation.
 #
-# @example
-#   include cockroachdb::install
+#
 class cockroachdb::install {
   package { $cockroachdb::dependencies:
     ensure   => installed,
