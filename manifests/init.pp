@@ -56,7 +56,11 @@
 #   Archive path of the binary file in the base repository.
 # [cockroach_archive_source]
 #   Full binary package source.
-#
+# [region]
+#   Cluster region
+# [zone]
+#   Availability zone in region
+
 class cockroachdb (
   # Would prefer to use Stdlib::absolutepath version. But it fails test with Puppet5
   #Stdlib::Absolutepath $servicepath,
@@ -78,6 +82,8 @@ class cockroachdb (
   String $node1ip                            = $cockroachdb::params::node1ip,
   String $node2ip                            = $cockroachdb::params::node2ip,
   String $node3ip                            = $cockroachdb::params::node3ip,
+  Optional[String] $region                   = $cockroachdb::params::region,
+  Optional[String] $zone                     = $cockroachdb::params::zone,
 
   #Archive
   Optional[String] $install_path             = $cockroachdb::params::install_path,

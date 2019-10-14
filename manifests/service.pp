@@ -22,6 +22,8 @@ class cockroachdb::service {
     'standarderror'     => $cockroachdb::standarderror,
     'syslogidentifier'  => $cockroachdb::syslogidentifier,
     'user'              => $cockroachdb::user,
+    'region'            => $cockroachdb::region,
+    'zone'              => $cockroachdb::zone,
   }
 
   file { '/etc/systemd/system/insecurecockroachdb.service':

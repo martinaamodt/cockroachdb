@@ -12,6 +12,8 @@
   $standarderror,
   $syslogidentifier,
   $user,
+  $region,
+  $zone,
 | -%>
 
 [Unit]
@@ -21,7 +23,7 @@ Requires = network.target
 [Service]
 Type = notify
 WorkingDirectory = <%= $workingdirectory %>
-ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+ExecStart = /usr/local/bin/cockroach start --insecure --locality=region=<%= $region %>,zone=<%= $zone %> --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
 TimeoutStopSec = <%= $timeoutstopsec %>
 Restart = <%= $restart %>
 RestartSec = <%= $restartsec %>
