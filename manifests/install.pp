@@ -15,15 +15,15 @@ class cockroachdb::install {
     path         => "/tmp/${cockroachdb::archive_name}",
     source       => $cockroachdb::cockroachdb_package_source,
     extract      => true,
-    extract_path => $cockroachdb::install_path,
+    extract_path => "/tmp/${cockroachdb::package_name}-${cockroachdb::package_ensure}",
     creates      => "${cockroachdb::install_path}/${cockroachdb::package_name}",
     cleanup      => true,
-    before       => File['/usr/local/bin/cockroach'],
+    before       => File["${cockroachdb::install_path}/${cockroachdb::package_name}"],
   }
 
-  file { '/usr/local/bin/cockroach':
+  file { "${cockroachdb::install_path}/${cockroachdb::package_name}":
     ensure => present,
-    source => '/tmp/cockroach-v19.1.5.linux-amd64/cockroach',
+    source => "/tmp/${cockroachdb::package_name}-${cockroachdb::package_ensure}/${cockroachdb::package_name}",
     mode   => '0755',
   }
 }
