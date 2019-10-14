@@ -38,10 +38,12 @@ deploy:
   password:
     secure: "$PASS"
   on:
+    branch: master
     condition: "$DEPLOY_TO_FORGE = yes"
 branches:
   only:
     - master
+    - dev
     - "/^v\\d+(.\\d+){2}$"
     - "^v\\d+(.\\d+){2}$"
 notifications:
