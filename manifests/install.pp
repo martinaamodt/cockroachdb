@@ -15,7 +15,7 @@ class cockroachdb::install {
     path         => "/tmp/${cockroachdb::archive_name}",
     source       => $cockroachdb::cockroachdb_package_source,
     extract      => true,
-    extract_path => "/tmp/",
+    extract_path => '/tmp/',
     creates      => "${cockroachdb::install_path}/${cockroachdb::package_name}",
     cleanup      => true,
     before       => File["${cockroachdb::install_path}/${cockroachdb::package_name}"],
