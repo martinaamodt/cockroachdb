@@ -16,11 +16,11 @@ describe 'cockroachdb' do
       let(:pre_condition) { 'include stdlib' }
 
       it { is_expected.to compile }
-      # it { is_expected.to contain_file('/usr/local/bin/cockroach').with_mode('0755') }
-      # it { is_expected.to contain_file('/var/lib/cockroach').without_mode }
-      # it { is_expected.to contain_service('insecurecockroachdb').with(ensure: 'running') }
-      # it { is_expected.to contain_package('tar') }
-      # it { is_expected.to contain_package('wget') }
+      it { is_expected.to contain_file('/usr/local/bin/cockroach').with_mode('0755') }
+      it { is_expected.to contain_file('/var/lib/cockroach').without_mode }
+      it { is_expected.to contain_service('insecurecockroachdb').with(ensure: 'running') }
+      it { is_expected.to contain_package('tar') }
+      it { is_expected.to contain_package('wget') }
     end
   end
 end
