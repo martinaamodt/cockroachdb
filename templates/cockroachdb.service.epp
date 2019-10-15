@@ -17,7 +17,7 @@
   $zone,
 | -%>
 
-<% $komma = false %>
+<% $comma = false %>
 
 [Unit]
 Description = <%= $description %>
@@ -30,9 +30,9 @@ WorkingDirectory = <%= $workingdirectory %>
 <% if $region != undef or $datacenter != undef or $zone != undef { -%>
 ExecStart = /usr/local/bin/cockroach start --insecure \
 --locality=<% if $region != undef { -%> \
-region=<%= $region %> <%$komma = true %> <% } -%> \
+region=<%= $region %> <%$comma = true %> <% } -%> \
 <% if $datacenter != undef { -%> \
-<% if $komma { -%>,<% } -%> <%= $datacenter %> <% $komma = true %> \
+<% if $comma { -%>,<% } -%> <%= $datacenter %> <% $komma = true %> \
 <% } -%>\
 <% if $zone != undef { -%> \
 <% if $komma == true { -%>,<% } -%>zone=<%= $zone %> \
