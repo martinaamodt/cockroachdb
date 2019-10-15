@@ -22,6 +22,9 @@ class cockroachdb::params {
   $user = 'cockroach'
   $secure = false
   $certsdir = undef
+  $region = undef
+  $datacenter = undef
+  $zone = undef
 
   # Archive
   $install_path = '/usr/local/bin'

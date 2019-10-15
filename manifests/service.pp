@@ -1,10 +1,8 @@
-# @summary A short summary of the purpose of this class
+# == Class cockroach::service
 #
-# A description of what this class does
+# This class is called from the cockroachdb class to configure the service.
 #
-# @example
-#   include cockroachdb::service
-
+#
 class cockroachdb::service {
 
   $cockroachdb_hash = {
@@ -24,6 +22,9 @@ class cockroachdb::service {
     'user'              => $cockroachdb::user,
     'secure'            => $cockroachdb::secure,
     'certsdir'          => $cockroachdb::certsdir,
+    'region'            => $cockroachdb::region,
+    'datacenter'        => $cockroachdb::datacenter,
+    'zone'              => $cockroachdb::zone,
   }
 
   file { '/etc/systemd/system/cockroachdb.service':
