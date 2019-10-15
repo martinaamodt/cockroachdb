@@ -22,6 +22,8 @@ class cockroachdb::service {
     'standarderror'     => $cockroachdb::standarderror,
     'syslogidentifier'  => $cockroachdb::syslogidentifier,
     'user'              => $cockroachdb::user,
+    'secure'            => $cockroachdb::secure,
+    'certsdir'          => $cockroachdb::certsdir,
   }
 
   file { '/etc/systemd/system/cockroachdb.service':
@@ -29,7 +31,6 @@ class cockroachdb::service {
     content => epp('cockroachdb/cockroachdb.service.epp', $cockroachdb_hash ),
     notify  => Service['cockroachdb'],
   }
-
   service { 'cockroachdb':
     ensure => 'running',
   }

@@ -56,6 +56,10 @@
 #   Archive path of the binary file in the base repository.
 # [cockroach_archive_source]
 #   Full binary package source.
+# [secure]
+#   Bool to select secure or unsecure mode
+# [certsdir]
+#   directory where certificates are stored. Only needed for secure mode
 #
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath      = $cockroachdb::params::servicepath,
@@ -74,6 +78,8 @@ class cockroachdb (
   String $node1ip                                  = $cockroachdb::params::node1ip,
   String $node2ip                                  = $cockroachdb::params::node2ip,
   String $node3ip                                  = $cockroachdb::params::node3ip,
+  Optional[Boolean] $secure                        = $cockroachdb::params::secure,
+  Optional[String] $certsdir                       = $cockroachdb::params::certsdir,
 
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
