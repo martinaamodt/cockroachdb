@@ -5,5 +5,4 @@ fixtures:
   forge_modules:
     stdlib: "puppetlabs/stdlib"
     inifile: "puppetlabs/inifile"
-    download_uncompress: "dsestero/download_uncompress"
     archive: "puppet/archive"

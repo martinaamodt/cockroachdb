@@ -5,7 +5,7 @@
 #
 class cockroachdb::service {
 
-  $insecurecockroachdb_hash = {
+  $cockroachdb_hash = {
     'description'       => $cockroachdb::description,
     'workingdirectory'  => $cockroachdb::workingdirectory,
     'node1ip'           => $cockroachdb::node1ip,
@@ -25,13 +25,13 @@ class cockroachdb::service {
     'zone'              => $cockroachdb::zone,
   }
 
-  file { '/etc/systemd/system/insecurecockroachdb.service':
+  file { '/etc/systemd/system/cockroachdb.service':
     ensure  => file,
-    content => epp('cockroachdb/insecurecockroachdb.service.epp', $insecurecockroachdb_hash ),
-    notify  => Service['insecurecockroachdb'],
+    content => epp('cockroachdb/cockroachdb.service.epp', $cockroachdb_hash ),
+    notify  => Service['cockroachdb'],
   }
 
-  service { 'insecurecockroachdb':
+  service { 'cockroachdb':
     ensure => 'running',
   }
 }
