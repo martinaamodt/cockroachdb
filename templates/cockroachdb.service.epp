@@ -32,10 +32,10 @@ ExecStart = /usr/local/bin/cockroach start --insecure \
 --locality=<% if $region != undef { -%> \
 region=<%= $region %> <%$comma = true %> <% } -%> \
 <% if $datacenter != undef { -%> \
-<% if $comma { -%>,<% } -%> <%= $datacenter %> <% $komma = true %> \
+<% if $comma { -%>,<% } -%> <%= $datacenter %> <% $comma = true %> \
 <% } -%>\
 <% if $zone != undef { -%> \
-<% if $komma == true { -%>,<% } -%>zone=<%= $zone %> \
+<% if $comma == true { -%>,<% } -%>zone=<%= $zone %> \
 --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> \
 --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
 <% } -%>
