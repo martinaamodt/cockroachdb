@@ -18,7 +18,7 @@ describe 'cockroachdb' do
       it { is_expected.to compile }
       it { is_expected.to contain_file('/usr/local/bin/cockroach').with_mode('0755') }
       it { is_expected.to contain_file('/var/lib/cockroach').with('owner' => 'cockroach') }
-      it { is_expected.to contain_service('insecurecockroachdb').with(ensure: 'running') }
+      it { is_expected.to contain_service('cockroachdb').with(ensure: 'running') }
       it { is_expected.to contain_package('tar') }
       it { is_expected.to contain_package('wget') }
     end
