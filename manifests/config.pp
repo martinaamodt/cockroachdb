@@ -1,9 +1,9 @@
-# @summary A short summary of the purpose of this class
+# == Class cockroach::config
 #
-# A description of what this class does
+# This class is called from the cockroachdb class to configure the program.
 #
-# @example
-#   include cockroachdb::config
+#
+#
 class cockroachdb::config {
 
   file { '/home/cockroach':
