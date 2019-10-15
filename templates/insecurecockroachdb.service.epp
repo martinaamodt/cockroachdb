@@ -14,6 +14,8 @@
   $user,
   $region,
   $datacenter,
+  $zone,
+  $komma = false,
 | -%>
 
 [Unit]
@@ -24,11 +26,31 @@ Requires = network.target
 Type = notify
 WorkingDirectory = <%= $workingdirectory %>
 
-<% if $region != undef or $datacenter != undef { -%>
-ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
-<% } -%> <% else { -%>
-ExecStart = /usr/local/bin/cockroach start --insecure --locality=region=<%= $region %>,datacenter=<%= $datacenter %> --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+<% if $region != undef or $datacenter != undef or $zone != undef { -%>
+ExecStart = /usr/local/bin/cockroach start --insecure \
+--locality=<% if $region != undef { -%> \
+region=<%= $region %> <%$komma = true %> \
+<% } -%> \
+<% if $datacenter != undef { -%> \
+<% if $komma == true { -%>,datacenter<%= $datacenter %> <% $komma = true %> \
+<% } -%> \
+<% else { %>datacenter=<%= $datacenter %> \
+<% } -%> \
+<% } -%> \
+<% if $zone != undef { -%> \
+<% if $komma == true { -%>,zone=<%= $zone %> \
+<% } -%> \
+<% else { -%>zone=<%= $zone %> \
+<% } -%> \
+<% } -%> \
+--advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> \
+--cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+<% } -%> \
+<% else { -%>
+ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> \
+--join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
 <% } -%>
+
 TimeoutStopSec = <%= $timeoutstopsec %>
 Restart = <%= $restart %>
 RestartSec = <%= $restartsec %>

@@ -22,6 +22,7 @@ class cockroachdb::service {
     'user'              => $cockroachdb::user,
     'region'            => $cockroachdb::region,
     'datacenter'        => $cockroachdb::datacenter,
+    'zone'              => $cockroachdb::zone,
   }
 
   file { '/etc/systemd/system/insecurecockroachdb.service':
