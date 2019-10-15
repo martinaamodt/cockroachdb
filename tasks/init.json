@@ -18,7 +18,7 @@
     },
     "insecure": {
       "description": "Use an insecure connection.",
-      "type": "Optional[Bool]"
+      "type": "Optional[Boolean]"
     },
     "certs_dir": {
       "description": "The path to the certificate directory containing the CA and client certificates and client key.",
