@@ -17,9 +17,15 @@
   $region,
   $datacenter,
   $zone,
+
 | -%>
 
-<% $comma = false %>
+<% $options = [
+    $region,
+    $datacenter,
+    $zone,
+  ]
+%>
 
 [Unit]
 Description = <%= $description %>
@@ -29,28 +35,10 @@ Requires = network.target
 Type = notify
 WorkingDirectory = <%= $workingdirectory %>
 <% if $secure { -%>
-  ExecStart = /usr/local/bin/cockroach start --certs-dir=<%= $certsdir %> --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+  ExecStart = /usr/local/bin/cockroach start --certs-dir=<%= $certsdir %>  --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
 <% } else { -%>
-  ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+  ExecStart = /usr/local/bin/cockroach start --insecure <% if $options.each |$option| { $option != undef } { -%>--locality=<% $options.each |$option| { "$option," } -%> <% } -%> --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
 <% } -%>
-
-<% if $region != undef or $datacenter != undef or $zone != undef { -%>
-ExecStart = /usr/local/bin/cockroach start --insecure \
---locality=<% if $region != undef { -%> \
-region=<%= $region %> <%$comma = true %> <% } -%> \
-<% if $datacenter != undef { -%> \
-<% if $comma { -%>,<% } -%> <%= $datacenter %> <% $comma = true %> \
-<% } -%>\
-<% if $zone != undef { -%> \
-<% if $comma == true { -%>,<% } -%>zone=<%= $zone %> \
---advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> \
---cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
-<% } -%>
-<% } -%> <% else { -%>
-ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> \
---join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
-<% } -%>
-
 TimeoutStopSec = <%= $timeoutstopsec %>
 Restart = <%= $restart %>
 RestartSec = <%= $restartsec %>
