@@ -12,7 +12,12 @@
   $standarderror,
   $syslogidentifier,
   $user,
+  $region,
+  $datacenter,
+  $zone,
 | -%>
+
+<% $comma = false %>
 
 [Unit]
 Description = <%= $description %>
@@ -21,7 +26,24 @@ Requires = network.target
 [Service]
 Type = notify
 WorkingDirectory = <%= $workingdirectory %>
-ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+
+<% if $region != undef or $datacenter != undef or $zone != undef { -%>
+ExecStart = /usr/local/bin/cockroach start --insecure \
+--locality=<% if $region != undef { -%> \
+region=<%= $region %> <%$comma = true %> <% } -%> \
+<% if $datacenter != undef { -%> \
+<% if $comma { -%>,<% } -%> <%= $datacenter %> <% $comma = true %> \
+<% } -%>\
+<% if $zone != undef { -%> \
+<% if $comma == true { -%>,<% } -%>zone=<%= $zone %> \
+--advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> \
+--cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+<% } -%>
+<% } -%> <% else { -%>
+ExecStart = /usr/local/bin/cockroach start --insecure --advertise-addr=<%= $facts[hostname] %> \
+--join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %>
+<% } -%>
+
 TimeoutStopSec = <%= $timeoutstopsec %>
 Restart = <%= $restart %>
 RestartSec = <%= $restartsec %>
