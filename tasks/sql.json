@@ -37,19 +37,19 @@
       "type": "Optional[String[1]]"
     },
     "execute": {
-      "description": "Execute SQL statements directly from the command line, without opening a shell.",
-      "type": "Optional[String[1]]"
+      "description": "Execute SQL statements directly from the command line, without opening a shell. Non-optional, to prevent shell from opening",
+      "type": "String[1]"
     },
     "format": {
-      "description": "A o use instead of the other arguments.",
-      "type": "Enum[]"
+      "description": "How to display table rows printed to the standard output. Possible values: tsv, csv, table, raw, records, sql, html.",
+      "type": "Optional[Enum[tsv,csv,table,raw,records,sql,html]]"
     },
     "safe_updates": {
-      "description": "A o use instead of the other arguments.",
-      "type": "Optional[String[1]]"
+      "description": "Disallow potentially unsafe SQL statements.",
+      "type": "Optional[Boolean]"
     },
     "set": {
-      "description": "A o use instead of the other arguments.",
+      "description": "Set a client-side option before executing SQL statements from the command line via --execute.",
       "type": "Optional[String[1]]"
     }
   }
