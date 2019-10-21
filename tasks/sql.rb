@@ -43,7 +43,6 @@ format = params['format']
 safe_updates = params['safe_updates']
 set = params['set']
 
-
 begin
   result = cluster_init(host, port, user, insecure, certs_dir, url, database, echo_sql, execute, format, safe_updates, set)
   puts result

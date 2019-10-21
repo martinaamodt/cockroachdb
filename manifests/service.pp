@@ -20,9 +20,6 @@ class cockroachdb::service {
     'standarderror'    => $cockroachdb::standarderror,
     'syslogidentifier' => $cockroachdb::syslogidentifier,
     'user'             => $cockroachdb::user,
-    'region'           => $cockroachdb::region,
-    'datacenter'       => $cockroachdb::datacenter,
-    'zone'             => $cockroachdb::zone,
     'additionalparams' => $cockroachdb::additional_params,
   }
 
