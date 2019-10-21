@@ -23,6 +23,7 @@ class cockroachdb::params {
   $region = undef
   $datacenter = undef
   $zone = undef
+  $additional_params = ''
 
   # Archive
   $install_path = '/usr/local/bin'

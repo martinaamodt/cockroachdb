@@ -65,6 +65,8 @@
 #   Archive path of the binary file in the base repository.
 # [cockroach_archive_source]
 #   Full binary package source.
+# [additional_params]
+#   Additional params and flags to pass to cockroachdb on startup. Must be provided as fully valid cockroachdb flags.
 #
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath      = $cockroachdb::params::servicepath,
@@ -86,6 +88,7 @@ class cockroachdb (
   String $node1ip                                  = $cockroachdb::params::node1ip,
   String $node2ip                                  = $cockroachdb::params::node2ip,
   String $node3ip                                  = $cockroachdb::params::node3ip,
+  Optional[String] $additional_params              = $cockroachdb::params::additional_params,
 
 
   #Archive
