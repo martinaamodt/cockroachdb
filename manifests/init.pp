@@ -38,15 +38,6 @@
 #   or the kernel log buffer.
 # [user]
 #   Sets the user/group that the processes are executed as.
-# [region]
-#   Sets the region of where the cluster is located.
-#   Region is set to "undef" by default.
-# [datacenter]
-#   Sets the datacenter of where the cluster is located.
-#   Datacenter is set to "undef" by default.
-# [zone]
-#   Sets the zone of where the cluster is located.
-#   Zone is set to "undef" by default.
 # [node1ip]
 #   Sets the ip-address for node one.
 # [node2ip]
@@ -86,7 +77,6 @@ class cockroachdb (
   String $node2ip                                  = $cockroachdb::params::node2ip,
   String $node3ip                                  = $cockroachdb::params::node3ip,
   Optional[String] $additional_params              = $cockroachdb::params::additional_params,
-
 
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
