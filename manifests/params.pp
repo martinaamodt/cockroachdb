@@ -20,6 +20,7 @@ class cockroachdb::params {
   $standarderror = 'syslog'
   $syslogidentifier = 'cockroach'
   $user = 'cockroach'
+  $additional_params = ''
 
   # Archive
   $install_path = '/usr/local/bin'
