@@ -7,16 +7,10 @@ require 'json'
 require 'open3'
 require 'puppet'
 
-def cluster_init(host, port, user, insecure, certs_dir, url)
+def cluster_init(host_flags)
   cmd_string = 'cockroach init'
-  cmd_string += " --host=#{host}" unless host.nil?
-  cmd_string += " --port=#{port}" unless port.nil?
-  cmd_string += " --user=#{user}" unless user.nil?
-  cmd_string += " --insecure=#{insecure}" unless insecure.nil?
-  cmd_string += " --certs-dir=#{certs_dir}" unless certs_dir.nil?
-  cmd_string += " --url=#{url}" unless url.nil?
 
-  stdout, stderr, status = Open3.capture3(cmd_string)
+  stdout, stderr, status = Open3.capture3(cmd_string + host_flags)
   raise Puppet::Error, "stderr: '#{stderr}'" if status != 0
   stdout.strip
 end
@@ -30,7 +24,8 @@ certs_dir = params['certs_dir']
 url = params['url']
 
 begin
-  result = cluster_init(host, port, user, insecure, certs_dir, url)
+  host_flags = cockroach_client_con(host, port, user, insecure, certs_dir, url)
+  result = cluster_init(host_flags)
   puts result
   exit 0
 rescue Puppet::Error => e
