@@ -6,12 +6,12 @@
 #### Table of Contents
 
 1. [Description](#description)
-2. [Setup - The basics of getting started with cockroachdb](#setup)
+2. [Setup - Getting started with cockroachdb](#setup)
     * [What cockroachdb affects](#what-cockroachdb-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with cockroachdb](#beginning-with-cockroachdb)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
+3. [Example Usage](#usage)
+4. [Limitations and Known Issues](#limitations)
 5. [Development - Guide for contributing to the module](#development)
 
 ## Description
@@ -23,7 +23,7 @@ The module was initially created as part of a project in the subject Infrastruct
 
 ## Setup
 
-### What cockroachdb affects **OPTIONAL**
+### What cockroachdb affects
 
 Dependencies installed by cockroachdb by default:
 * tar
@@ -32,72 +32,72 @@ Dependencies installed by cockroachdb by default:
 * [puppetlabs-stdlib](https://forge.puppet.com/puppetlabs/stdlib) >= 4.13.1 < 7.0.0
 
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
 At the moment the module requires that database nodes are identified by FQDNs, so DNS should be configured prior to use.
 
-To use secure mode, you need to handle the certificates either manually, or using other modules/programs.
+To use secure mode, you need to handle the certificates either manually, or using other modules/programs. **As of now, _secure mode_ is not supported**
 
 ### Beginning with cockroachdb
 
 First add the module to your Puppetfile, see the Forge instructions. Then all you need in your manifest to get started is:
 ```Puppet
 class { 'cockroachdb':
+  node1ip     => 'db0',
+  node2ip     => 'db1',
+  node3ip     => 'db2',
+  secure_mode => false,
+}
+```
+
+## Usage
+**Specifying different cockroachdb version:**
+```Puppet
+class { 'cockroachdb':
   node1ip        => 'db0',
   node2ip        => 'db1',
   node3ip        => 'db2',
+  package_ensure => 'v19.1.0.linux-amd64',
+  secure_mode    => false,
 }
 ```
-In this example, db0-2 are the DNS hostnames of 3 VMs. These nodes will then get CockroachDB installed, and the service will get started.
+
+**Adding additional parameters to cockroachdb that are not directly supported in the module:**
+```Puppet
+class { 'cockroachdb':
+  node1ip           => 'db0',
+  node2ip           => 'db1',
+  node3ip           => 'db2',
+  secure_mode       => false,
+  additional_params => '--store=/mnt/ssd01',
+}
+```
+
+**Initializing a cluster using bolt tasks:**
+
 To then initialize the database cluster, use:
 ```
-bolt task run cockroachdb -n db0
+bolt task run cockroachdb -n db0 insecure=false
 ```
 Verify that the cluster is online:
 ```
-bolt task run cockroachdb::node_ls -n db0
-```
-
-
-## Usage
-
-Include usage examples for common use cases in the **Usage** section. Show your users how to use your module to solve problems, and be sure to include code examples. Include three to five examples of the most important or common tasks a user can accomplish with your module. Show users how to accomplish more complex tasks that involve different types, classes, and functions working in tandem.
-
-## Reference
-
-This section is deprecated. Instead, add reference information to your code as Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your module. For details on how to add code comments and generate documentation with Strings, see the Puppet Strings [documentation](https://puppet.com/docs/puppet/latest/puppet_strings.html) and [style guide](https://puppet.com/docs/puppet/latest/puppet_strings_style.html)
-
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the root of your module directory and list out each of your module's classes, defined types, facts, functions, Puppet tasks, task plans, and resource types and providers, along with the parameters for each.
-
-For each element (class, defined type, function, and so on), list:
-
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
-
-For example:
-
-```
-### `pet::cat`
-
-#### Parameters
-
-##### `meow`
-
-Enables vocalization in your cat. Valid options: 'string'.
-
-Default: 'medium-loud'.
+bolt task run cockroachdb::node_ls -n db0 insecure=false
 ```
 
 ## Limitations
+**Limitations:**
+* Secure mode is not supported
+* Only a three node initial cluster is supported. But still works with more nodes joining later
+* Assumes DNS is configured and in use
+* 
 
-In the Limitations section, list any incompatibilities, known issues, or other warnings.
+**Known Issues:**
+
+**Warnings:**
+
 
 ## Development
+[Contribution guidelines for this project](CONTRIBUTING.md)
 
-In the Development section, tell other users the ground rules for contributing to your project and how they should submit their work.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
+## Changelog
+[Changelog](CHANGELOG.md)
