@@ -52,6 +52,9 @@
       "description": "Show node disk usage details.",
       "type": "Optional[Boolean]"
     }
-  }
+  },
+  "files": [
+    "cockroachdb/files/helper.rb"
+  ]
 }
 

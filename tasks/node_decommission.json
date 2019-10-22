@@ -32,6 +32,9 @@
       "description": "When to return to the client. Possible values: all, none.",
       "type": "Optional[Enum[all,none]]"
     }
-  }
+  },
+  "files": [
+    "cockroachdb/files/helper.rb"
+  ]
 }
 

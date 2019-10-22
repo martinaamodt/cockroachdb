@@ -28,5 +28,8 @@
       "description": "A connection URL to use instead of the other arguments.",
       "type": "Optional[String[1]]"
     }
-  }
+  },
+  "files": [
+    "cockroachdb/files/helper.rb"
+  ]
 }

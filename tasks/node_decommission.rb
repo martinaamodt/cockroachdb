@@ -6,6 +6,7 @@
 require 'json'
 require 'open3'
 require 'puppet'
+require_relative '../files/helper.rb'
 
 def node_decommission(wait, host_flags)
   cmd_string = 'cockroach node ls'

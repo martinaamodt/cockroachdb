@@ -6,6 +6,8 @@
 require 'json'
 require 'open3'
 require 'puppet'
+require_relative '../files/helper.rb'
+
 
 def cluster_init(host_flags)
   cmd_string = 'cockroach init'
