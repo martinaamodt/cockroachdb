@@ -21,6 +21,7 @@ class cockroachdb::service {
     'syslogidentifier' => $cockroachdb::syslogidentifier,
     'user'             => $cockroachdb::user,
     'additionalparams' => $cockroachdb::additional_params,
+    'locality'         => $cockroachdb::locality,
   }
 
   file { '/etc/systemd/system/cockroachdb.service':
