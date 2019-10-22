@@ -1,6 +1,6 @@
 {
   "name": "neckbeards-cockroachdb",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "author": "Martin Aamodt, Zackeus Bengtsson, Joachim Winsnes",
   "summary": "WIP! cockroachdb module. Intended for testing",
   "license": "Apache-2.0",
@@ -13,10 +13,6 @@
     {
       "name": "puppetlabs-stdlib",
       "version_requirement": ">= 4.13.1 < 7.0.0"
-    },
-    {
-      "name": "puppetlabs-inifile",
-      "version_requirement": "3.1.0"
     }
   ],
   "operatingsystem_support": [

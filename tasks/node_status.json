@@ -1,0 +1,60 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Check status of a node in the cluster.",
+  "input_method": "stdin",
+  "parameters": {
+    "host": {
+      "description": "The server host and port number to connect to. This can be the address of any node in the cluster.",
+      "type": "Optional[String[1]]"
+    },
+    "port": {
+      "description": "The server port to connect to. Note: The port number can also be specified via --host.",
+      "type": "Optional[Integer[1]]"
+    },
+    "user": {
+      "description": "The SQL user that will own the client session.",
+      "type": "Optional[String[1]]"
+    },
+    "insecure": {
+      "description": "Use an insecure connection.",
+      "type": "Optional[Boolean]"
+    },
+    "certs_dir": {
+      "description": "The path to the certificate directory containing the CA and client certificates and client key.",
+      "type": "Optional[String[1]]"
+    },
+    "url": {
+      "description": "A connection URL to use instead of the other arguments.",
+      "type": "Optional[String[1]]"
+    },
+    "format": {
+      "description": "How to display table rows printed to the standard output. Possible values: tsv, csv, table, records, sql, html.",
+      "type": "Optional[Enum[tsv,csv,table,records,sql,html]]"
+    },
+    "timeout": {
+      "description": "Set the duration of time that the subcommand is allowed to run before it returns an error and prints partial information. The timeout is specified with a suffix of s for seconds, m for minutes, and h for hours. If this flag is not set, the subcommand may hang.",
+      "type": "Optional[Pattern[/^[0-9]{1,}(s|m|h)$/]]"
+    },
+    "all": {
+      "description": "Show all node details.",
+      "type": "Optional[Boolean]"
+    },
+    "decommission": {
+      "description": "Show node decommissioning details.",
+      "type": "Optional[Boolean]"
+    },
+    "ranges": {
+      "description": "Show node details for ranges and replicas.",
+      "type": "Optional[Boolean]"
+    },
+    "stats": {
+      "description": "Show node disk usage details.",
+      "type": "Optional[Boolean]"
+    }
+  },
+  "files": [
+    "cockroachdb/files/helper.rb"
+  ]
+}
+

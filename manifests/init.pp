@@ -38,15 +38,6 @@
 #   or the kernel log buffer.
 # [user]
 #   Sets the user/group that the processes are executed as.
-# [region]
-#   Sets the region of where the cluster is located.
-#   Region is set to "undef" by default.
-# [datacenter]
-#   Sets the datacenter of where the cluster is located.
-#   Datacenter is set to "undef" by default.
-# [zone]
-#   Sets the zone of where the cluster is located.
-#   Zone is set to "undef" by default.
 # [node1ip]
 #   Sets the ip-address for node one.
 # [node2ip]
@@ -65,10 +56,17 @@
 #   Archive path of the binary file in the base repository.
 # [cockroach_archive_source]
 #   Full binary package source.
+<<<<<<< HEAD
 # [secure]
 #   Bool to select secure or unsecure mode
 # [certsdir]
 #   directory where certificates are stored. Only needed for secure mode
+=======
+# [additional_params]
+#   Additional params and flags to pass to cockroachdb on startup. Must be provided as fully valid cockroachdb flags.
+# [secure_mode]
+#   If cockroachdb secure mode is enabled or not. Currently only supports insecure mode.
+>>>>>>> bd5d816ca495b69ab460966b1f07b186e1b8ec64
 #
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath      = $cockroachdb::params::servicepath,
@@ -84,15 +82,11 @@ class cockroachdb (
   Optional[String] $standarderror                  = $cockroachdb::params::standarderror,
   Optional[String] $syslogidentifier               = $cockroachdb::params::syslogidentifier,
   Optional[String] $user                           = $cockroachdb::params::user,
-  Optional[String] $region                         = $cockroachdb::params::region,
-  Optional[String] $datacenter                     = $cockroachdb::params::datacenter,
-  Optional[String] $zone                           = $cockroachdb::params::zone,
   String $node1ip                                  = $cockroachdb::params::node1ip,
   String $node2ip                                  = $cockroachdb::params::node2ip,
   String $node3ip                                  = $cockroachdb::params::node3ip,
-  Optional[Boolean] $secure                        = $cockroachdb::params::secure,
-  Optional[String] $certsdir                       = $cockroachdb::params::certsdir,
-
+  Optional[String] $additional_params              = $cockroachdb::params::additional_params,
+  Boolean $secure_mode                             = $cockroachdb::params::secure_mode,
 
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
@@ -103,6 +97,9 @@ class cockroachdb (
   Optional[String] $cockroach_archive_source       = $cockroachdb::params::cockroachdb_package_source,
 
 ) inherits cockroachdb::params {
+  if $cockroachdb::secure_mode != false {
+    fail('The module does not support insecure mode at this time.')
+  }
   contain cockroachdb::install
   contain cockroachdb::config
   contain cockroachdb::service
