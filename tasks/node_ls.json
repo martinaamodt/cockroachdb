@@ -37,6 +37,6 @@
       "type": "Optional[Pattern[/^[0-9]{1,}(s|m|h)$/]]"
     }
   },
-  "files": ["cockroachdb/files/helper.rb"]
+  "files": ["files/helper.rb"]
 }
 
