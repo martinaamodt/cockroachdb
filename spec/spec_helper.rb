@@ -3,16 +3,19 @@ require 'rspec-puppet-facts'
 
 require 'spec_helper_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_local.rb'))
 
+require 'coveralls'
+Coveralls.wear!
+
 include RspecPuppetFacts
 
 default_facts = {
-  puppetversion: Puppet.version,
-  facterversion: Facter.version,
+    puppetversion: Puppet.version,
+    facterversion: Facter.version,
 }
 
 default_fact_files = [
-  File.expand_path(File.join(File.dirname(__FILE__), 'default_facts.yml')),
-  File.expand_path(File.join(File.dirname(__FILE__), 'default_module_facts.yml')),
+    File.expand_path(File.join(File.dirname(__FILE__), 'default_facts.yml')),
+    File.expand_path(File.join(File.dirname(__FILE__), 'default_module_facts.yml')),
 ]
 
 default_fact_files.each do |f|
