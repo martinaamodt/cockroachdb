@@ -3,10 +3,6 @@
 [![Build Status](https://travis-ci.com/martinaamodt/cockroachdb.svg?branch=master)](https://travis-ci.com/martinaamodt/cockroachdb)
 [![CodeFactor](https://www.codefactor.io/repository/github/martinaamodt/cockroachdb/badge)](https://www.codefactor.io/repository/github/martinaamodt/cockroachdb)
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
-
-The README template below provides a starting point with details about what information to include in your README.
-
 #### Table of Contents
 
 1. [Description](#description)
@@ -20,13 +16,19 @@ The README template below provides a starting point with details about what info
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your module does and what kind of problems users can solve with it.
+This is a [CockroachDB](https://www.cockroachlabs.com/product/) module for Puppet. It will help you set up a database cluster
+quickly and provides basic functionality for managing it using Bolt tasks. The module is created using PDK for Open Source Puppet and using the Open Source version of CockroachDB.
 
-This should be a fairly short description helps the user decide if your module is what they want.
+The module was initially created as part of a project in the subject Infrastructure as Code (IMT3005) at NTNU Gjøvik.
 
 ## Setup
 
 ### What cockroachdb affects **OPTIONAL**
+
+Dependencies:
+* puppet-archive v4.2.0
+* puppetlabs-stdlib >= 4.13.1 < 7.0.0
+* puppetlabs-inifile 3.1.0
 
 If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
 
