@@ -78,7 +78,6 @@ class cockroachdb (
   String $node3ip                                  = $cockroachdb::params::node3ip,
   Optional[String] $additional_params              = $cockroachdb::params::additional_params,
 
-
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
   Optional[String] $package_name                   = $cockroachdb::params::package_name,
