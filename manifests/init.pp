@@ -91,7 +91,7 @@ class cockroachdb (
 
 ) inherits cockroachdb::params {
   if $cockroachdb::secure_mode != false {
-    fail("The module does not support insecure mode at this time.")
+    fail('The module does not support insecure mode at this time.')
   }
   contain cockroachdb::install
   contain cockroachdb::config
