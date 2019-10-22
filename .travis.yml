@@ -16,8 +16,8 @@ stages:
 - static
 - spec
 - acceptance
-- deploy
-  if: (branch = master) AND (tag =~ /^v\d+(.\d+){2}$/) AND NOT (type = pull_request)
+- name: deploy
+  if: branch = master AND tag =~ /^v\d+(.\d+){2}$/ AND NOT type IS pull_request
 matrix:
   fast_finish: true
   include:
