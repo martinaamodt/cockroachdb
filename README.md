@@ -1,6 +1,6 @@
 # cockroachdb
 
-[![Build Status](https://travis-ci.com/martinaamodt/cockroachdb.svg?branch=master)
+[![Build Status](https://travis-ci.com/martinaamodt/cockroachdb.svg?branch=master)](https://travis-ci.com/martinaamodt/cockroachdb)
 [![CodeFactor](https://www.codefactor.io/repository/github/martinaamodt/cockroachdb/badge)](https://www.codefactor.io/repository/github/martinaamodt/cockroachdb)
 
 Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
