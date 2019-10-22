@@ -207,3 +207,4 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/ruby,linux,puppet,rubymine
+.vscode/
