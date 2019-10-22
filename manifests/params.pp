@@ -21,6 +21,7 @@ class cockroachdb::params {
   $syslogidentifier = 'cockroach'
   $user = 'cockroach'
   $additional_params = ''
+  $secure_mode = undef
 
   # Archive
   $install_path = '/usr/local/bin'
