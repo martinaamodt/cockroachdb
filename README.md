@@ -25,28 +25,39 @@ The module was initially created as part of a project in the subject Infrastruct
 
 ### What cockroachdb affects **OPTIONAL**
 
-Dependencies:
-* puppet-archive v4.2.0
-* puppetlabs-stdlib >= 4.13.1 < 7.0.0
-* puppetlabs-inifile 3.1.0
+Dependencies installed by cockroachdb by default:
+* tar
+* wget
+* [puppet-archive](https://forge.puppet.com/puppet/archive) v4.2.0
+* [puppetlabs-stdlib](https://forge.puppet.com/puppetlabs/stdlib) >= 4.13.1 < 7.0.0
 
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here.
+At the moment the module requires that database nodes are identified by FQDNs, so DNS should be configured prior to use.
 
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
+To use secure mode, you need to handle the certificates either manually, or using other modules/programs.
 
 ### Beginning with cockroachdb
 
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+First add the module to your Puppetfile, see the Forge instructions. Then all you need in your manifest to get started is:
+```Puppet
+class { 'cockroachdb':
+  node1ip        => 'db0',
+  node2ip        => 'db1',
+  node3ip        => 'db2',
+}
+```
+In this example, db0-2 are the DNS hostnames of 3 VMs. These nodes will then get CockroachDB installed, and the service will get started.
+To then initialize the database cluster, use:
+```
+bolt task run cockroachdb -n db0
+```
+Verify that the cluster is online:
+```
+bolt task run cockroachdb::node_ls -n db0
+```
+
 
 ## Usage
 
