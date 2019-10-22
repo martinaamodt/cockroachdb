@@ -15,8 +15,6 @@
   $additionalparams,
 | -%>
 
-
-
 [Unit]
 Description = <%= $description %>
 Requires = network.target
