@@ -36,6 +36,7 @@
       "description": "Set the duration of time that the subcommand is allowed to run before it returns an error and prints partial information. The timeout is specified with a suffix of s for seconds, m for minutes, and h for hours. If this flag is not set, the subcommand may hang.",
       "type": "Optional[Pattern[/^[0-9]{1,}(s|m|h)$/]]"
     }
-  }
+  },
+  "files": ["cockroachdb/files/"]
 }
 
