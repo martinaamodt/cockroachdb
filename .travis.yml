@@ -13,10 +13,11 @@ bundler_args: "--without system_tests"
 rvm:
   - 2.5.3
 stages:
-- static
-- spec
-- acceptance
-- deploy
+- name: static
+- name: spec
+- name: acceptance
+- name: deploy
+  if: (branch = master) AND (tag =~ /^v\d+(.\d+){2}$/) AND (NOT (type = pull_request))
 matrix:
   fast_finish: true
   include:
@@ -44,8 +45,6 @@ branches:
   only:
     - master
     - dev
-    - "/^v\\d+(.\\d+){2}$"
-    - "^v\\d+(.\\d+){2}$"
 notifications:
   email: false
 env:
