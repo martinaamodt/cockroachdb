@@ -17,6 +17,7 @@ stages:
 - spec
 - acceptance
 - deploy
+  if: (branch = master) AND (tag =~ /^v\d+(.\d+){2}$/) AND (type != pull_request)
 matrix:
   fast_finish: true
   include:
@@ -44,8 +45,6 @@ branches:
   only:
     - master
     - dev
-    - "/^v\\d+(.\\d+){2}$"
-    - "^v\\d+(.\\d+){2}$"
 notifications:
   email: false
 env:
