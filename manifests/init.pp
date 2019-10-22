@@ -58,6 +58,8 @@
 #   Full binary package source.
 # [additional_params]
 #   Additional params and flags to pass to cockroachdb on startup. Must be provided as fully valid cockroachdb flags.
+# [secure_mode]
+#   If cockroachdb secure mode is enabled or not. Currently only supports insecure mode.
 #
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath      = $cockroachdb::params::servicepath,
@@ -77,6 +79,7 @@ class cockroachdb (
   String $node2ip                                  = $cockroachdb::params::node2ip,
   String $node3ip                                  = $cockroachdb::params::node3ip,
   Optional[String] $additional_params              = $cockroachdb::params::additional_params,
+  Boolean $secure_mode                             = $cockroachdb::params::secure_mode,
 
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
@@ -87,6 +90,9 @@ class cockroachdb (
   Optional[String] $cockroach_archive_source       = $cockroachdb::params::cockroachdb_package_source,
 
 ) inherits cockroachdb::params {
+  if $cockroachdb::secure_mode != false {
+    fail('The module does not support insecure mode at this time.')
+  }
   contain cockroachdb::install
   contain cockroachdb::config
   contain cockroachdb::service
