@@ -77,11 +77,11 @@ class { 'cockroachdb':
 
 To then initialize the database cluster, use:
 ```
-bolt task run cockroachdb -n db0 insecure=false
+bolt task run cockroachdb -n db0 insecure=true
 ```
 Verify that the cluster is online:
 ```
-bolt task run cockroachdb::node_ls -n db0 insecure=false
+bolt task run cockroachdb::node_ls -n db0 insecure=true
 ```
 
 ## Limitations
