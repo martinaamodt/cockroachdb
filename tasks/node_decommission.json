@@ -1,7 +1,7 @@
 {
   "puppet_task_version": 1,
   "supports_noop": false,
-  "description": "Initialize a database cluster",
+  "description": "Decommission a node from the cluster",
   "input_method": "stdin",
   "parameters": {
     "host": {
@@ -27,9 +27,14 @@
     "url": {
       "description": "A connection URL to use instead of the other arguments.",
       "type": "Optional[String[1]]"
+    },
+    "wait": {
+      "description": "When to return to the client. Possible values: all, none.",
+      "type": "Optional[Enum[all,none]]"
     }
   },
   "files": [
     "cockroachdb/files/helper.rb"
   ]
 }
+
