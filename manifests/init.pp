@@ -62,6 +62,8 @@
 #   If cockroachdb secure mode is enabled or not. Currently only supports insecure mode.
 # [locality]
 #   Array of Hashes containing locality information for nodes.
+# [certs_dir]
+#  The directory where CockroachDB can find certificates.
 #
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath      = $cockroachdb::params::servicepath,
@@ -83,6 +85,7 @@ class cockroachdb (
   Optional[String] $additional_params              = $cockroachdb::params::additional_params,
   Boolean $secure_mode                             = $cockroachdb::params::secure_mode,
   Optional[Array[String, 1]] $locality             = $cockroachdb::params::locality,
+  Optional[Stdlib::Absolutepath] $certs_dir        = $cockroachdb::params::certs_dir,
 
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
@@ -96,6 +99,7 @@ class cockroachdb (
   if $cockroachdb::secure_mode != false {
     fail('The module does not support insecure mode at this time.')
   }
+
   contain cockroachdb::install
   contain cockroachdb::config
   contain cockroachdb::service
