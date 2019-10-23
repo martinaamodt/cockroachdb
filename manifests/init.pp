@@ -82,7 +82,7 @@ class cockroachdb (
   String $node3ip                                  = $cockroachdb::params::node3ip,
   Optional[String] $additional_params              = $cockroachdb::params::additional_params,
   Boolean $secure_mode                             = $cockroachdb::params::secure_mode,
-  Optional[Array[String, 1]] $locality   = $cockroachdb::params::locality,
+  Optional[Array[String, 1]] $locality             = $cockroachdb::params::locality,
 
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
