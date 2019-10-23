@@ -22,6 +22,8 @@ class cockroachdb::service {
     'user'             => $cockroachdb::user,
     'additionalparams' => $cockroachdb::additional_params,
     'locality'         => $cockroachdb::locality,
+    'secure_mode'      => $cockroachdb::secure_mode,
+    'certs_dir'        => $cockroachdb::certs_dir,
   }
 
   file { '/etc/systemd/system/cockroachdb.service':
