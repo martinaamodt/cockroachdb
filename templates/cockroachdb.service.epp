@@ -27,6 +27,7 @@ ExecStart = /usr/local/bin/cockroach start --insecure <% unless $locality == und
 TimeoutStopSec = <%= $timeoutstopsec %>
 Restart = <%= $restart %>
 RestartSec = <%= $restartsec %>
+RestartPreventExitStatus=0
 StandardOutput = <%= $standardoutput %>
 StandardError = <%= $standarderror %>
 SyslogIdentifier = <%= $syslogidentifier %>
