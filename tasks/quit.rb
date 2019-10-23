@@ -10,7 +10,7 @@ require_relative '../files/helper.rb'
 
 def quit(decommission, host_flags)
   cmd_string = 'cockroach quit'
-  cmd_string += " --decommission=#{decommission}" unless decommission.nil?
+  cmd_string += ' --decommission' unless decommission.nil?
 
   stdout, stderr, status = Open3.capture3(cmd_string + host_flags)
   raise Puppet::Error, "stderr: '#{stderr}'" if status != 0
