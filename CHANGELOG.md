@@ -2,11 +2,13 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [v0.2.5](https://github.com/martinaamodt/cockroachdb/tree/v0.2.5) (2019-10-22)
-[Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v0.1.5...v0.2.5)
+## [v0.3.0](https://github.com/martinaamodt/cockroachdb/tree/v0.3.0) (2019-10-23)
+[Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v0.1.5...v0.3.0)
 
 **Merged pull requests:**
 
+- Fix locality flag [\#83](https://github.com/martinaamodt/cockroachdb/pull/83) ([Hexoplon](https://github.com/Hexoplon))
+- Explicitly enable insecure mode [\#77](https://github.com/martinaamodt/cockroachdb/pull/77) ([Hexoplon](https://github.com/Hexoplon))
 - Sql bolt task [\#72](https://github.com/martinaamodt/cockroachdb/pull/72) ([Hexoplon](https://github.com/Hexoplon))
 - added additional\_params \#69 [\#70](https://github.com/martinaamodt/cockroachdb/pull/70) ([Hexoplon](https://github.com/Hexoplon))
 - hotfix executable [\#64](https://github.com/martinaamodt/cockroachdb/pull/64) ([martinaamodt](https://github.com/martinaamodt))
@@ -19,6 +21,7 @@ All notable changes to this project will be documented in this file. The format 
 - Params class [\#28](https://github.com/martinaamodt/cockroachdb/pull/28) ([Hexoplon](https://github.com/Hexoplon))
 - Service template [\#25](https://github.com/martinaamodt/cockroachdb/pull/25) ([martinaamodt](https://github.com/martinaamodt))
 - puppet-archive [\#14](https://github.com/martinaamodt/cockroachdb/pull/14) ([Hexoplon](https://github.com/Hexoplon))
+- Task node [\#73](https://github.com/martinaamodt/cockroachdb/pull/73) ([Hexoplon](https://github.com/Hexoplon))
 - Revamp testing [\#27](https://github.com/martinaamodt/cockroachdb/pull/27) ([Hexoplon](https://github.com/Hexoplon))
 - config test service [\#23](https://github.com/martinaamodt/cockroachdb/pull/23) ([joachiwi](https://github.com/joachiwi))
 - correct version number [\#12](https://github.com/martinaamodt/cockroachdb/pull/12) ([martinaamodt](https://github.com/martinaamodt))
