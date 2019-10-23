@@ -1,7 +1,7 @@
 {
   "puppet_task_version": 1,
   "supports_noop": false,
-  "description": "Initialize a database cluster",
+  "description": "List nodes in a cluster.",
   "input_method": "stdin",
   "parameters": {
     "host": {
@@ -27,9 +27,18 @@
     "url": {
       "description": "A connection URL to use instead of the other arguments.",
       "type": "Optional[String[1]]"
+    },
+    "format": {
+      "description": "How to display table rows printed to the standard output. Possible values: tsv, csv, table, records, sql, html.",
+      "type": "Optional[Enum[tsv,csv,table,records,sql,html]]"
+    },
+    "timeout": {
+      "description": "Set the duration of time that the subcommand is allowed to run before it returns an error and prints partial information. The timeout is specified with a suffix of s for seconds, m for minutes, and h for hours. If this flag is not set, the subcommand may hang.",
+      "type": "Optional[Pattern[/^[0-9]{1,}(s|m|h)$/]]"
     }
   },
   "files": [
     "cockroachdb/files/helper.rb"
   ]
 }
+

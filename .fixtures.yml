@@ -4,5 +4,4 @@
 fixtures:
   forge_modules:
     stdlib: "puppetlabs/stdlib"
-    inifile: "puppetlabs/inifile"
     archive: "puppet/archive"
