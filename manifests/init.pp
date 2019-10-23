@@ -96,10 +96,6 @@ class cockroachdb (
   Optional[String] $cockroach_archive_source       = $cockroachdb::params::cockroachdb_package_source,
 
 ) inherits cockroachdb::params {
-  if $cockroachdb::secure_mode != false {
-    fail('The module does not support insecure mode at this time.')
-  }
-
   contain cockroachdb::install
   contain cockroachdb::config
   contain cockroachdb::service
