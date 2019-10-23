@@ -23,6 +23,7 @@ class cockroachdb::params {
   $additional_params = ''
   $secure_mode = undef
   $locality = undef
+  $certs_dir = undef
 
   # Archive
   $install_path = '/usr/local/bin'
