@@ -60,6 +60,8 @@
 #   Additional params and flags to pass to cockroachdb on startup. Must be provided as fully valid cockroachdb flags.
 # [secure_mode]
 #   If cockroachdb secure mode is enabled or not. Currently only supports insecure mode.
+# [locality]
+#   Array of Hashes containing locality information for nodes.
 #
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath      = $cockroachdb::params::servicepath,
@@ -80,6 +82,7 @@ class cockroachdb (
   String $node3ip                                  = $cockroachdb::params::node3ip,
   Optional[String] $additional_params              = $cockroachdb::params::additional_params,
   Boolean $secure_mode                             = $cockroachdb::params::secure_mode,
+  Optional[Array[String, 1]] $locality             = $cockroachdb::params::locality,
 
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,

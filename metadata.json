@@ -1,6 +1,5 @@
 {
   "name": "neckbeards-cockroachdb",
-
   "version": "0.2.5",
   "author": "Martin Aamodt, Zackeus Bengtsson, Joachim Winsnes",
   "summary": "WIP! cockroachdb module. Intended for testing",
