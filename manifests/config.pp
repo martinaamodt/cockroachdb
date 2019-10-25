@@ -22,4 +22,12 @@ class cockroachdb::config {
     owner   => 'cockroach',
     require => User['cockroach'],
   }
+
+  if $cockroachdb::secure_mode == true {
+    file { $cockroachdb::certs_dir:
+      ensure  => directory,
+      owner   => 'cockroach',
+      require => User['cockroach']
+    }
+  }
 }
