@@ -41,10 +41,10 @@ describe 'cockroachdb', type: :class do
 
     context "on #{os} with different version of cockroach and install path" do
       let(:params) do
-        super().merge(package_ensure: 'v19.1.0.linux-amd64', install_path: '/root')
+        super().merge(package_ensure: 'v19.1.1.linux-amd64', install_path: '/root')
       end
 
-      it { is_expected.to contain_file('/root/cockroach').with(owner: 'cockroach') }
+      it { is_expected.to contain_file('/root/cockroach').with(mode: '0755') }
     end
   end
 end
