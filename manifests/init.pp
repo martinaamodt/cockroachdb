@@ -1,68 +1,94 @@
-# == Class: cockroachdb
 #
-# Recives parameters from the user and initializes the cockroach::install and cockroach::config
-# classes.
 #
-# === Paramaters
+# @summary
+#   Recives parameters from the user and initializes the cockroach::install and cockroach::config
+#   classes.
 #
-# [servicepath]
+#
+#
+# @param servicepath
 #   Location of where the ".service" file is to be saved.
 #   If the parameter is not defined it will be saved in "/etc/systemd/system".
-# [workingdirectory]
+#
+# @param workingdirectory
 #   Location of where the working directory will be created.
 #   If the parameter is not defined it will be created in "/var/lib/cockroach".
-# [dependencies]
+#
+# @param dependencies
 #   Consists of dependencies 'tar' and 'wget' by default. Failing to include these dependencies while defining
 #   this parameter yourself may result in dependency issues.
-# [description]
+#
+# @param description
 #   Cockroachdb node description.
-# [cache]
+#
+# @param cache
 #   The total size for caches, shared if there are multiple storage devices, noted with a
 #   decimal or '%'.
-# [maxsqlmemory]
+#
+# @param maxsqlmemory
 #   The maximum in-memory storage capaciy available to store temprary data for SQL queries.
 #   Noted with a decimal point or '%'.
-# [timeoutstopsec]
+#
+# @param timeoutstopsec
 #   Configures the time to wait for each ExecStop command for systemd.
-# [restart]
+#
+# @param restart
 #   Defines when the service is to be restarted. Configured with always by default
 #   and will restart on every restart setting and exit cause.
-# [restartsec]
+#
+# @param restartsec
 #   Defines the time to sleep before restarting the service.
-# [standardoutput]
+#
+# @param standardoutput
 #   Controls where the file descriptor 1 (STDOUT) of the executed processes is connected to.
-# [standarderror]
+#
+# @param standarderror
 #    Controls where the file descriptor 2 (STDERR) of the executed process is connected to.
-# [syslogidentifier]
+#
+# @param syslogidentifier
 #   Sets the process name ("syslog tag") to prefix log lines sent to the logging system
 #   or the kernel log buffer.
-# [user]
+#
+# @param user
 #   Sets the user/group that the processes are executed as.
-# [node1ip]
+#
+# @param node1ip
 #   Sets the ip-address for node one.
-# [node2ip]
+#
+# @param node2ip
 #   Sets the ip-address for node two.
-# [node3ip]
+#
+# @param node3ip
 #   Sets the ip-address for node three.
-# [install_path]
+#
+# @param install_path
 #   Location where the program binary file is to be located.
-# [package_name]
-#   Name of the package to install
-# [package_ensure]
+#
+# @param package_name
+#   Name of the package to install.
+#
+# @param package_ensure
 #   Version number and linux distribution name.
-# [repository_url]
+#
+# @param repository_url
 #   Base repository URL.
-# [archive_name]
+#
+# @param archive_name
 #   Archive path of the binary file in the base repository.
-# [cockroach_archive_source]
+#
+# @param cockroach_archive_source
 #   Full binary package source.
-# [additional_params]
+#
+# @param additional_params
 #   Additional params and flags to pass to cockroachdb on startup. Must be provided as fully valid cockroachdb flags.
-# [secure_mode]
+#
+# @param secure_mode
 #   If cockroachdb secure mode is enabled or not. Currently only supports insecure mode.
-# [locality]
+#
+# @param locality
 #   Array of Hashes containing locality information for nodes.
-# [certs_dir]
+#
+# @param certs_dir
 #  The directory where CockroachDB can find certificates.
 #
 class cockroachdb (

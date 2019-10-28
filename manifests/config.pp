@@ -1,7 +1,7 @@
-# == Class cockroach::config
 #
-# This class is called from the cockroachdb class to configure the program.
 #
+# @summary
+#   This class is called from the cockroachdb class to configure the program.
 #
 #
 class cockroachdb::config {

@@ -1,7 +1,7 @@
-# Class cockroachdb::params
-# =========================
 #
-# Default values for cockroachdb module. Non optional are undef
+#
+# @summary
+#   Default values for cockroachdb module.
 #
 class cockroachdb::params {
   $dependencies = ['tar', 'wget']

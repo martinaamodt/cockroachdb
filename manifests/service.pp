@@ -1,6 +1,7 @@
-# == Class cockroach::service
 #
-# This class is called from the cockroachdb class to configure the service.
+#
+# @summary
+#   This class is called from the cockroachdb class to configure the service.
 #
 #
 class cockroachdb::service {
