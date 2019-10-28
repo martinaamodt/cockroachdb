@@ -6,6 +6,8 @@
 class cockroachdb::service {
 
   $cockroachdb_hash = {
+    'install_path'     => $cockroachdb::install_path,
+    'package_name'     => $cockroachdb::package_name,
     'description'      => $cockroachdb::description,
     'workingdirectory' => $cockroachdb::workingdirectory,
     'node1ip'          => $cockroachdb::node1ip,
@@ -26,7 +28,7 @@ class cockroachdb::service {
     'certs_dir'        => $cockroachdb::certs_dir,
   }
 
-  file { '/etc/systemd/system/cockroachdb.service':
+  file { "${cockroachdb::servicepath}/cockroachdb.service":
     ensure  => file,
     content => epp('cockroachdb/cockroachdb.service.epp', $cockroachdb_hash),
     notify  => Service['cockroachdb'],
