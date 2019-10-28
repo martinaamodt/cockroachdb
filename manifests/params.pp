@@ -5,7 +5,7 @@
 #
 class cockroachdb::params {
   $dependencies = ['tar', 'wget']
-  $servicepath = '/etc/systemd/system/'
+  $servicepath = '/etc/systemd/system'
   $description = 'Cockroach Database cluster node'
   $workingdirectory = '/var/lib/cockroach'
   $node1ip = undef
