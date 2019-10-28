@@ -26,7 +26,7 @@ class cockroachdb::service {
     'certs_dir'        => $cockroachdb::certs_dir,
   }
 
-  file { '/etc/systemd/system/cockroachdb.service':
+  file { "${cockroachdb::servicepath}/cockroachdb.service":
     ensure  => file,
     content => epp('cockroachdb/cockroachdb.service.epp', $cockroachdb_hash),
     notify  => Service['cockroachdb'],
