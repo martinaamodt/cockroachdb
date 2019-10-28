@@ -6,6 +6,8 @@
 class cockroachdb::service {
 
   $cockroachdb_hash = {
+    'install_path'     => $cockroachdb::install_path,
+    'package_name'     => $cockroachdb::package_name,
     'description'      => $cockroachdb::description,
     'workingdirectory' => $cockroachdb::workingdirectory,
     'node1ip'          => $cockroachdb::node1ip,
