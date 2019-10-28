@@ -93,7 +93,7 @@
 # @param dns_mode
 #  Use FQDN, hostnames, IPs or custom facts to identify nodes.
 # @param dns_mode_custom
-#  Custom fact used to identify nodes.
+#  Custom fact used to identify nodes. Can be any valid facter fact, like custom facts.
 
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath                         = $cockroachdb::params::servicepath,
