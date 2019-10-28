@@ -14,6 +14,8 @@
   $user,
   $additionalparams,
   $locality,
+  $secure_mode,
+  $certs_dir,
 | -%>
 
 [Unit]
@@ -23,7 +25,15 @@ Requires = network.target
 [Service]
 Type = notify
 WorkingDirectory = <%= $workingdirectory %>
-ExecStart = /usr/local/bin/cockroach start --insecure <% unless $locality == undef  { -%>--locality=<% $locality.each |$index, $value|  {%><%= "$value" %><% unless $index == ($locality.length - 1)  {%><%= ',' %><% }}} %> --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %> <%= $additionalparams %>
+ExecStart = /usr/local/bin/cockroach start <% unless $secure_mode == true { -%>--insecure <% } -%>
+ <%- if $secure_mode { -%>--certs-dir=<%= "$certs_dir" %><% } -%>
+ <% unless $locality == undef { -%>--locality=<% $locality.each |$index, $value| { -%><%= "$value" -%>
+ <%- unless $index == ($locality.length - 1) { -%><%= ',' -%><% } } } -%>
+ --advertise-addr=<%= $facts[hostname] -%>
+ --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip -%>
+ --cache=<%= $cache -%>
+ --max-sql-memory=<%= $maxsqlmemory -%>
+ <%= $additionalparams %>
 TimeoutStopSec = <%= $timeoutstopsec %>
 Restart = <%= $restart %>
 RestartSec = <%= $restartsec %>
