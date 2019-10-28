@@ -27,7 +27,7 @@ Requires = network.target
 [Service]
 Type = notify
 WorkingDirectory = <%= $workingdirectory %>
-ExecStart = <%= "$install_path/$package_name" %>> <% unless $secure_mode == true { -%>--insecure <% } -%>
+ExecStart = <%= "$install_path/$package_name" %> <% unless $secure_mode == true { -%>--insecure <% } -%>
  <%- if $secure_mode { -%>--certs-dir=<%= "$certs_dir" %><% } -%>
  <% unless $locality == undef { -%>--locality=<% $locality.each |$index, $value| { -%><%= "$value" -%>
  <%- unless $index == ($locality.length - 1) { -%><%= ',' -%><% } } } -%>
