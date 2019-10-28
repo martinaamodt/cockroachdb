@@ -1,9 +1,10 @@
-# == Class: cockroachdb
+#
+#
 # @summary
 #   Recives parameters from the user and initializes the cockroach::install and cockroach::config
 #   classes.
 #
-# === Paramaters
+#
 #
 # @param servicepath
 #   Location of where the ".service" file is to be saved.
