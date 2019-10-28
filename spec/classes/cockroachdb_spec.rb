@@ -15,7 +15,6 @@ describe 'cockroachdb', type: :class do
     let(:facts) { os_facts }
 
     context "on #{os} with default settings, secure mode off" do
-
       it { is_expected.to compile }
       # Verify that executable is installed
       it { is_expected.to contain_file('/usr/local/bin/cockroach').with(mode: '0755') }
