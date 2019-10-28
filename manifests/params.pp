@@ -24,6 +24,8 @@ class cockroachdb::params {
   $secure_mode = undef
   $locality = undef
   $certs_dir = undef
+  $dns_mode = 'hostname'
+  $dns_mode_custom = undef
 
   # Archive
   $install_path = '/usr/local/bin'
