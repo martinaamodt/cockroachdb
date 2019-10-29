@@ -1,0 +1,40 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Stop a node in a cluster.",
+  "input_method": "stdin",
+  "parameters": {
+    "host": {
+      "description": "The server host and port number to connect to. This can be the address of any node in the cluster.",
+      "type": "Optional[String[1]]"
+    },
+    "port": {
+      "description": "The server port to connect to. Note: The port number can also be specified via --host.",
+      "type": "Optional[Integer[1]]"
+    },
+    "user": {
+      "description": "The SQL user that will own the client session.",
+      "type": "Optional[String[1]]"
+    },
+    "insecure": {
+      "description": "Use an insecure connection.",
+      "type": "Optional[Boolean]"
+    },
+    "certs_dir": {
+      "description": "The path to the certificate directory containing the CA and client certificates and client key.",
+      "type": "Optional[String[1]]"
+    },
+    "url": {
+      "description": "A connection URL to use instead of the other arguments.",
+      "type": "Optional[String[1]]"
+    },
+    "decommission": {
+      "description": "If specified, the node will be permanently removed instead of temporarily stopped.",
+      "type": "Optional[Boolean]"
+    }
+  },
+  "files": [
+    "cockroachdb/files/helper.rb"
+  ]
+}
+

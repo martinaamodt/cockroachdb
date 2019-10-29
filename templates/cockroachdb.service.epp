@@ -1,6 +1,8 @@
-<%- | $node1ip,
+<%- | $install_path,
+  $package_name,
   $description,
   $workingdirectory,
+  $node1ip,
   $node2ip,
   $node3ip,
   $cache,
@@ -14,6 +16,10 @@
   $user,
   $additionalparams,
   $locality,
+  $secure_mode,
+  $certs_dir,
+  $dns_mode,
+  $dns_mode_custom,
 | -%>
 
 [Unit]
@@ -23,10 +29,20 @@ Requires = network.target
 [Service]
 Type = notify
 WorkingDirectory = <%= $workingdirectory %>
-ExecStart = /usr/local/bin/cockroach start --insecure <% unless $locality == undef  { -%>--locality=<% $locality.each |$index, $value|  {%><%= "$value" %><% unless $index == ($locality.length - 1)  {%><%= ',' %><% }}} %> --advertise-addr=<%= $facts[hostname] %> --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip %> --cache=<%= $cache %> --max-sql-memory=<%= $maxsqlmemory %> <%= $additionalparams %>
+ExecStart = <%= "$install_path/$package_name" %> <% unless $secure_mode == true { -%>--insecure <% } -%>
+ <%- if $secure_mode { -%>--certs-dir=<%= "$certs_dir" %><% } -%>
+ <% unless $locality == undef { -%>--locality=<% $locality.each |$index, $value| { -%><%= "$value" -%>
+ <%- unless $index == ($locality.length - 1) { -%><%= ',' -%><% } } } -%>
+ <%- case $dns_mode { 'custom': {%> --advertise-addr=<%= $facts[$dns_mode_custom] -%><%} -%>
+ <%- default: { %> --advertise-addr=<%= $facts[$dns_mode] %><%- }} -%>
+ --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip -%>
+ --cache=<%= $cache -%>
+ --max-sql-memory=<%= $maxsqlmemory -%>
+ <%= $additionalparams %>
 TimeoutStopSec = <%= $timeoutstopsec %>
 Restart = <%= $restart %>
 RestartSec = <%= $restartsec %>
+RestartPreventExitStatus=0
 StandardOutput = <%= $standardoutput %>
 StandardError = <%= $standarderror %>
 SyslogIdentifier = <%= $syslogidentifier %>

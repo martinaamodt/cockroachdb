@@ -1,11 +1,11 @@
-# Class cockroachdb::params
-# =========================
 #
-# Default values for cockroachdb module. Non optional are undef
+#
+# @summary
+#   Default values for cockroachdb module.
 #
 class cockroachdb::params {
   $dependencies = ['tar', 'wget']
-  $servicepath = '/etc/systemd/system/'
+  $servicepath = '/etc/systemd/system'
   $description = 'Cockroach Database cluster node'
   $workingdirectory = '/var/lib/cockroach'
   $node1ip = undef
@@ -23,6 +23,9 @@ class cockroachdb::params {
   $additional_params = ''
   $secure_mode = undef
   $locality = undef
+  $certs_dir = undef
+  $dns_mode = 'hostname'
+  $dns_mode_custom = undef
 
   # Archive
   $install_path = '/usr/local/bin'

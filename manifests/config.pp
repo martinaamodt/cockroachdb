@@ -1,25 +1,33 @@
-# == Class cockroach::config
 #
-# This class is called from the cockroachdb class to configure the program.
 #
+# @summary
+#   This class is called from the cockroachdb class to configure the program.
 #
 #
 class cockroachdb::config {
 
-  file { '/home/cockroach':
+  file { "/home/${cockroachdb::user}":
     ensure => directory,
-    before => User['cockroach']
+    before => User[$cockroachdb::user]
   }
 
-  user { 'cockroach':
+  user { $cockroachdb::user:
     ensure => present,
-    home   => '/home/cockroach',
+    home   => "/home/${cockroachdb::user}",
     shell  => '/bin/bash',
   }
 
-  file { '/var/lib/cockroach':
+  file { $cockroachdb::workingdirectory:
     ensure  => directory,
-    owner   => 'cockroach',
-    require => User['cockroach'],
+    owner   => $cockroachdb::user,
+    require => User[$cockroachdb::user],
+  }
+
+  if $cockroachdb::secure_mode == true {
+    file { $cockroachdb::certs_dir:
+      ensure  => directory,
+      owner   => $cockroachdb::user,
+      require => User[$cockroachdb::user]
+    }
   }
 }

@@ -1,6 +1,7 @@
-# == Class cockroachdb::install
 #
-# This class is called from the the cockroachdb class for installation.
+#
+# @summary
+#   This class is called from the the cockroachdb class for installation.
 #
 #
 class cockroachdb::install {

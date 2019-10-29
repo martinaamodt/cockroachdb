@@ -17,7 +17,7 @@ stages:
 - name: spec
 - name: acceptance
 - name: deploy
-  if: (branch = master) AND (tag =~ /^v\d+(.\d+){2}$/) AND (NOT (type = pull_request))
+  if: (tag =~ /^v\d+(.\d+){2}$/) AND (NOT (type = pull_request))
 matrix:
   fast_finish: true
   include:
@@ -39,12 +39,14 @@ deploy:
   password:
     secure: "$PASS"
   on:
+    tags: true
     branch: master
     condition: "$DEPLOY_TO_FORGE = yes"
 branches:
   only:
     - master
     - dev
+    - /^v\d+(.\d+){2}$/
 notifications:
   email: false
 env:
