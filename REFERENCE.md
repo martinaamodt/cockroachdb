@@ -248,6 +248,22 @@ The directory where CockroachDB can find certificates.
 
 Default value: $cockroachdb::params::certs_dir
 
+##### `dns_mode`
+
+Data type: `Optional[Enum['hostname', 'fqdn', 'ipaddress', 'custom']]`
+
+Use FQDN, hostnames, IPs or custom facts to identify nodes.
+
+Default value: $cockroachdb::params::dns_mode
+
+##### `dns_mode_custom`
+
+Data type: `Optional[String]`
+
+Custom fact used to identify nodes. Can be any valid facter fact, like custom facts.
+
+Default value: $cockroachdb::params::dns_mode_custom
+
 ### cockroachdb::config
 
 This class is called from the cockroachdb class to configure the program.
