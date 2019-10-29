@@ -36,17 +36,29 @@ Dependencies installed by cockroachdb by default:
 
 At the moment the module requires that database nodes are identified by FQDNs, so DNS should be configured prior to use.
 
-To use secure mode, you need to handle the certificates either manually, or using other modules/programs. **As of now, _secure mode_ is not supported**
+To use secure mode, you need to handle the certificates either manually, or using other modules/programs. 
 
 ### Beginning with cockroachdb
 
 First add the module to your Puppetfile, see the Forge instructions. Then all you need in your manifest to get started is:
+
+**Insecure mode**
 ```Puppet
 class { 'cockroachdb':
   node1ip     => 'db0',
   node2ip     => 'db1',
   node3ip     => 'db2',
   secure_mode => false,
+}
+``` 
+**Secure mode**
+```Puppet
+class { 'cockroachdb':
+  node1ip     => 'db0',
+  node2ip     => 'db1',
+  node3ip     => 'db2',
+  secure_mode => true,
+  certs_dir   => '/root/certs',
 }
 ```
 
@@ -86,10 +98,8 @@ bolt task run cockroachdb::node_ls -n db0 insecure=true
 
 ## Limitations
 **Limitations:**
-* Secure mode is not supported
 * Only a three node initial cluster is supported. But still works with more nodes joining later
-* Assumes DNS is configured and in use
-* 
+* Can not switch from secure to insecure mode
 
 **Known Issues:**
 
