@@ -34,7 +34,7 @@ ExecStart = <%= "$install_path/$package_name" %> start <% unless $secure_mode ==
  <% unless $locality == undef { -%>--locality=<% $locality.each |$index, $value| { -%><%= "$value" -%>
  <%- unless $index == ($locality.length - 1) { -%><%= ',' -%><% } } } -%>
  <%- case $dns_mode { 'custom': {%>--advertise-addr=<%= $facts[$dns_mode_custom] -%><%} -%>
- <%- default: { %> --advertise-addr=<%= $facts[$dns_mode] %><%- }} -%>
+ <%- default: { %>--advertise-addr=<%= $facts[$dns_mode] %><%- }} -%>
  --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip -%>
  --cache=<%= $cache -%>
  --max-sql-memory=<%= $maxsqlmemory -%>
