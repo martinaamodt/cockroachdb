@@ -12,7 +12,7 @@ class cockroachdb::client (
   String $package_ensure                           = $cockroachdb::params::package_ensure,
   Optional[String] $repository_url                 = $cockroachdb::params::repository_url,
   Optional[String] $archive_name                   = $cockroachdb::params::archive_name,
-  Optional[String] $cockroach_archive_source       = $cockroachdb::params::cockroachdb_package_source,
+  Optional[String] $cockroachdb_package_source       = $cockroachdb::params::cockroachdb_package_source,
 ) inherits cockroachdb::params {
   package { $dependencies:
     ensure   => installed,
