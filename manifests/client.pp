@@ -1,9 +1,8 @@
-# @summary A short summary of the purpose of this class
-#
-# A description of what this class does
+# @summary Install the cockroachdb client
 #
 # @example
 #   include cockroachdb::client
+#
 class cockroachdb::client (
   Optional[Stdlib::Absolutepath] $workingdirectory = $cockroachdb::params::workingdirectory,
   Optional[Tuple] $dependencies                    = $cockroachdb::params::dependencies,
