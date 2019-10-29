@@ -76,7 +76,7 @@
 # @param archive_name
 #   Archive path of the binary file in the base repository.
 #
-# @param cockroach_archive_source
+# @param cockroachdb_package_source
 #   Full binary package source.
 #
 # @param additional_params
