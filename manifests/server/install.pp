@@ -3,35 +3,28 @@
 # @summary
 #   This class is called from the the cockroachdb class for installation.
 #
-# @api private
 #
 class cockroachdb::server::install {
-  $dependencies = $cockroachdb::dependencies
-  $archive_name = $cockroachdb::archive_name
-  $cockroachdb_package_source = $cockroachdb::cockroachdb_package_source
-  $install_path = $cockroachdb::install_path
-  $package_name = $cockroachdb::package_name
-  $package_ensure = $cockroachdb::package_ensure
 
-  package { $dependencies:
+  package { $cockroachdb::server::dependencies:
     ensure   => installed,
     provider => apt,
-    before   => Archive[$archive_name],
+    before   => Archive[$cockroachdb::server::archive_name],
   }
 
-  archive { $archive_name:
-    path         => "/tmp/${archive_name}",
-    source       => $cockroachdb_package_source,
+  archive { $cockroachdb::server::archive_name:
+    path         => "/tmp/${cockroachdb::server::archive_name}",
+    source       => $cockroachdb::server::cockroachdb_package_source,
     extract      => true,
     extract_path => '/tmp/',
-    creates      => "${install_path}/${package_name}",
+    creates      => "${cockroachdb::server::install_path}/${cockroachdb::server::package_name}",
     cleanup      => true,
-    before       => File["${install_path}/${package_name}"],
+    before       => File["${cockroachdb::server::install_path}/${cockroachdb::server::package_name}"],
   }
 
-  file { "${install_path}/${package_name}":
+  file { "${cockroachdb::server::install_path}/${cockroachdb::server::package_name}":
     ensure => present,
-    source => "/tmp/${package_name}-${package_ensure}/${package_name}",
+    source => "/tmp/${cockroachdb::server::package_name}-${cockroachdb::server::package_ensure}/${cockroachdb::server::package_name}",
     mode   => '0755',
   }
 }
