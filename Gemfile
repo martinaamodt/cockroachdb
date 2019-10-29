@@ -28,7 +28,7 @@ group :development do
   gem "puppet-module-posix-dev-r#{minor_version}", '~> 0.3',     require: false, platforms: [:ruby]
   gem "puppet-module-win-default-r#{minor_version}", '~> 0.3',   require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-module-win-dev-r#{minor_version}", '~> 0.3',       require: false, platforms: [:mswin, :mingw, :x64_mingw]
-  gem 'github_changelog_generator',                              require: false
+  gem "github_changelog_generator", '1.14.3',                    require: false
   gem 'puppet-strings',                                          require: false
 end
 
