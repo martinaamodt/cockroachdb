@@ -7,6 +7,7 @@
 
 * [`cockroachdb`](#cockroachdb): Recives parameters from the user and initializes the cockroach::install and cockroach::config
 classes.
+* [`cockroachdb::client`](#cockroachdbclient): Install the cockroachdb client
 * [`cockroachdb::config`](#cockroachdbconfig): This class is called from the cockroachdb class to configure the program.
 * [`cockroachdb::install`](#cockroachdbinstall): This class is called from the the cockroachdb class for installation.
 * [`cockroachdb::params`](#cockroachdbparams): Default values for cockroachdb module.
@@ -263,6 +264,86 @@ Data type: `Optional[String]`
 Custom fact used to identify nodes. Can be any valid facter fact, like custom facts.
 
 Default value: $cockroachdb::params::dns_mode_custom
+
+### cockroachdb::client
+
+Install the cockroachdb client
+
+#### Examples
+
+##### 
+
+```puppet
+include cockroachdb::client
+```
+
+#### Parameters
+
+The following parameters are available in the `cockroachdb::client` class.
+
+##### `workingdirectory`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+
+
+Default value: $cockroachdb::params::workingdirectory
+
+##### `dependencies`
+
+Data type: `Optional[Tuple]`
+
+
+
+Default value: $cockroachdb::params::dependencies
+
+##### `install_path`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+
+
+Default value: $cockroachdb::params::install_path
+
+##### `package_name`
+
+Data type: `Optional[String]`
+
+
+
+Default value: $cockroachdb::params::package_name
+
+##### `package_ensure`
+
+Data type: `String`
+
+
+
+Default value: $cockroachdb::params::package_ensure
+
+##### `repository_url`
+
+Data type: `Optional[String]`
+
+
+
+Default value: $cockroachdb::params::repository_url
+
+##### `archive_name`
+
+Data type: `Optional[String]`
+
+
+
+Default value: $cockroachdb::params::archive_name
+
+##### `cockroachdb_package_source`
+
+Data type: `Optional[String]`
+
+
+
+Default value: $cockroachdb::params::cockroachdb_package_source
 
 ### cockroachdb::config
 
