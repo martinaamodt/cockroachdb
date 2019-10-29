@@ -5,6 +5,12 @@
 #
 #
 class cockroachdb::server::install {
+  package { $::cockroachdb::dependencies:
+    ensure   => installed,
+    provider => apt,
+    before   => Archive[$::cockroachdb::archive_name],
+  }
+
   archive { $cockroachdb::archive_name:
     path         => "/tmp/${cockroachdb::archive_name}",
     source       => $cockroachdb::cockroachdb_package_source,
