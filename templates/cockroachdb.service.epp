@@ -18,6 +18,8 @@
   $locality,
   $secure_mode,
   $certs_dir,
+  $dns_mode,
+  $dns_mode_custom,
 | -%>
 
 [Unit]
@@ -31,7 +33,8 @@ ExecStart = <%= "$install_path/$package_name" %> <% unless $secure_mode == true 
  <%- if $secure_mode { -%>--certs-dir=<%= "$certs_dir" %><% } -%>
  <% unless $locality == undef { -%>--locality=<% $locality.each |$index, $value| { -%><%= "$value" -%>
  <%- unless $index == ($locality.length - 1) { -%><%= ',' -%><% } } } -%>
- --advertise-addr=<%= $facts[hostname] -%>
+ <%- case $dns_mode { 'custom': {%> --advertise-addr=<%= $facts[$dns_mode_custom] -%><%} -%>
+ <%- default: { %> --advertise-addr=<%= $facts[$dns_mode] %><%- }} -%>
  --join=<%= $node1ip %>,<%= $node2ip %>,<%= $node3ip -%>
  --cache=<%= $cache -%>
  --max-sql-memory=<%= $maxsqlmemory -%>
