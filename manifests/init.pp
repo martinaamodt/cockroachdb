@@ -89,12 +89,12 @@
 #   Array of Hashes containing locality information for nodes.
 #
 # @param certs_dir
-#  The directory where CockroachDB can find certificates.
+#   The directory where CockroachDB can find certificates.
 # @param dns_mode
-#  Use FQDN, hostnames, IPs or custom facts to identify nodes.
+#   Use FQDN, hostnames, IPs or custom facts to identify nodes.
 # @param dns_mode_custom
-#  Custom fact used to identify nodes. Can be any valid facter fact, like custom facts.
-
+#   Custom fact used to identify nodes. Can be any valid facter fact, like custom facts.
+#
 class cockroachdb (
   Optional[Stdlib::Absolutepath] $servicepath                         = $cockroachdb::params::servicepath,
   Optional[Stdlib::Absolutepath] $workingdirectory                    = $cockroachdb::params::workingdirectory,
