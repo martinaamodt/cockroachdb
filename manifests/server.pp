@@ -95,7 +95,7 @@
 # @param dns_mode_custom
 #   Custom fact used to identify nodes. Can be any valid facter fact, like custom facts.
 #
-class cockroachdb (
+class cockroachdb::server (
   Optional[Stdlib::Absolutepath] $servicepath                         = $cockroachdb::params::servicepath,
   Optional[Stdlib::Absolutepath] $workingdirectory                    = $cockroachdb::params::workingdirectory,
   Optional[Tuple] $dependencies                                       = $cockroachdb::params::dependencies,
@@ -128,11 +128,11 @@ class cockroachdb (
   ,
 
 ) inherits cockroachdb::params {
-  contain cockroachdb::install
-  contain cockroachdb::config
-  contain cockroachdb::service
+  contain cockroachdb::server::install
+  contain cockroachdb::server::config
+  contain cockroachdb::server::service
 
-  Class['::cockroachdb::install']
-  -> Class['::cockroachdb::config']
-  -> Class['::cockroachdb::service']
+  Class['::cockroachdb::server::install']
+  -> Class['::cockroachdb::server::config']
+  -> Class['::cockroachdb::server::service']
 }

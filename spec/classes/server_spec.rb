@@ -3,10 +3,10 @@ require 'spec_helper'
 describe 'cockroachdb::server', type: :class do
   let(:params) do
     {
-        node1ip: 'db0',
-        node2ip: 'db1',
-        node3ip: 'db2',
-        secure_mode: false,
+      node1ip: 'db0',
+      node2ip: 'db1',
+      node3ip: 'db2',
+      secure_mode: false,
     }
   end
   let(:node) { 'db1' }

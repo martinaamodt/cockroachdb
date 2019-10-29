@@ -4,7 +4,7 @@
 #   This class is called from the cockroachdb class to configure the program.
 #
 #
-class cockroachdb::config {
+class cockroachdb::server::config {
 
   file { "/home/${cockroachdb::user}":
     ensure => directory,

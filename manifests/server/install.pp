@@ -4,7 +4,7 @@
 #   This class is called from the the cockroachdb class for installation.
 #
 #
-class cockroachdb::install {
+class cockroachdb::server::install {
   package { $cockroachdb::dependencies:
     ensure   => installed,
     provider => apt,

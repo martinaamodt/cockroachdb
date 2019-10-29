@@ -4,7 +4,7 @@
 #   This class is called from the cockroachdb class to configure the service.
 #
 #
-class cockroachdb::service {
+class cockroachdb::server::service {
 
   $cockroachdb_hash = {
     'install_path'     => $cockroachdb::install_path,
