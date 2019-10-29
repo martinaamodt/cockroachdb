@@ -7,8 +7,6 @@
 class cockroachdb::client (
   Optional[Stdlib::Absolutepath] $workingdirectory = $cockroachdb::params::workingdirectory,
   Optional[Tuple] $dependencies                    = $cockroachdb::params::dependencies,
-  Boolean $secure_mode                             = $cockroachdb::params::secure_mode,
-  Optional[Stdlib::Absolutepath] $certs_dir        = $cockroachdb::params::certs_dir,
   #Archive
   Optional[Stdlib::Absolutepath] $install_path     = $cockroachdb::params::install_path,
   Optional[String] $package_name                   = $cockroachdb::params::package_name,
