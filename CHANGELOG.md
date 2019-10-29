@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.0.0](https://github.com/martinaamodt/cockroachdb/tree/v1.0.0) (2019-10-29)
+[Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v0.3.0...v1.0.0)
+
+**Merged pull requests:**
+
+- Choose which fact facter should use to get advertise-address [\#92](https://github.com/martinaamodt/cockroachdb/pull/92) ([Hexoplon](https://github.com/Hexoplon))
+- Changed hardcoded names with already existing class params [\#89](https://github.com/martinaamodt/cockroachdb/pull/89) ([Hexoplon](https://github.com/Hexoplon))
+- Secure mode \#52 [\#88](https://github.com/martinaamodt/cockroachdb/pull/88) ([Hexoplon](https://github.com/Hexoplon))
+- Added RestartPreventExitStatus to service [\#87](https://github.com/martinaamodt/cockroachdb/pull/87) ([Hexoplon](https://github.com/Hexoplon))
+- Task quit [\#85](https://github.com/martinaamodt/cockroachdb/pull/85) ([Hexoplon](https://github.com/Hexoplon))
+
 ## [v0.3.0](https://github.com/martinaamodt/cockroachdb/tree/v0.3.0) (2019-10-23)
 [Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v0.1.5...v0.3.0)
 
@@ -31,12 +42,15 @@ All notable changes to this project will be documented in this file. The format 
 ## [v0.1.5](https://github.com/martinaamodt/cockroachdb/tree/v0.1.5) (2019-10-11)
 [Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v0.1.4...v0.1.5)
 
+**Merged pull requests:**
+
+- Updated to pdk 1.14 [\#6](https://github.com/martinaamodt/cockroachdb/pull/6) ([Hexoplon](https://github.com/Hexoplon))
+
 ## [v0.1.4](https://github.com/martinaamodt/cockroachdb/tree/v0.1.4) (2019-10-10)
 [Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v0.1.3...v0.1.4)
 
 **Merged pull requests:**
 
-- Updated to pdk 1.14 [\#6](https://github.com/martinaamodt/cockroachdb/pull/6) ([Hexoplon](https://github.com/Hexoplon))
 - User and dir change [\#5](https://github.com/martinaamodt/cockroachdb/pull/5) ([joachiwi](https://github.com/joachiwi))
 
 ## [v0.1.3](https://github.com/martinaamodt/cockroachdb/tree/v0.1.3) (2019-10-10)
