@@ -6,28 +6,28 @@
 #
 class cockroachdb::server::config {
 
-  file { "/home/${cockroachdb::user}":
+  file { "/home/${cockroachdb::server::user}":
     ensure => directory,
-    before => User[$cockroachdb::user]
+    before => User[$cockroachdb::server::user]
   }
 
-  user { $cockroachdb::user:
+  user { $cockroachdb::server::user:
     ensure => present,
-    home   => "/home/${cockroachdb::user}",
+    home   => "/home/${cockroachdb::server::user}",
     shell  => '/bin/bash',
   }
 
-  file { $cockroachdb::workingdirectory:
+  file { $cockroachdb::server::workingdirectory:
     ensure  => directory,
-    owner   => $cockroachdb::user,
-    require => User[$cockroachdb::user],
+    owner   => $cockroachdb::server::user,
+    require => User[$cockroachdb::server::user],
   }
 
-  if $cockroachdb::secure_mode == true {
-    file { $cockroachdb::certs_dir:
+  if $cockroachdb::server::secure_mode == true {
+    file { $cockroachdb::server::certs_dir:
       ensure  => directory,
-      owner   => $cockroachdb::user,
-      require => User[$cockroachdb::user]
+      owner   => $cockroachdb::server::user,
+      require => User[$cockroachdb::server::user]
     }
   }
 }
