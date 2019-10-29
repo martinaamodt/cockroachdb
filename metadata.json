@@ -1,6 +1,6 @@
 {
   "name": "neckbeards-cockroachdb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Martin Aamodt, Zackeus Bengtsson, Joachim Winsnes",
   "summary": "Puppet module for CockroachDB. Created as part of a project in the subject Infrastructure as Code (IMT3005) at NTNU Gjøvik.",
   "license": "Apache-2.0",
