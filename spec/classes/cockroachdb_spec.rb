@@ -24,7 +24,7 @@ describe 'cockroachdb', type: :class do
       it { is_expected.to contain_file('/etc/systemd/system/cockroachdb.service').with_content(%r{--insecure}) }
       # Verify that hostname is inserted into service template
       it { is_expected.to contain_file('/etc/systemd/system/cockroachdb.service').with_content(%r{--advertise-addr=db1}) }
-      it { is_expected.to contain_service('cockroachdb').with(ensure: 'running') }
+      it { is_expected.to contain_service('cockroachdb').with(ensure: 'running', enable: true) }
 
       it { is_expected.to contain_package('tar') }
       it { is_expected.to contain_package('wget') }
