@@ -285,7 +285,8 @@ The following parameters are available in the `cockroachdb::client` class.
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
-
+Location of where the working directory will be created.
+If the parameter is not defined it will be created in "/var/lib/cockroach".
 
 Default value: $cockroachdb::params::workingdirectory
 
@@ -293,7 +294,8 @@ Default value: $cockroachdb::params::workingdirectory
 
 Data type: `Optional[Tuple]`
 
-
+Consists of dependencies 'tar' and 'wget' by default. Failing to include these dependencies while defining
+this parameter yourself may result in dependency issues.
 
 Default value: $cockroachdb::params::dependencies
 
@@ -301,7 +303,7 @@ Default value: $cockroachdb::params::dependencies
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
-
+Location where the program binary file is to be located.
 
 Default value: $cockroachdb::params::install_path
 
@@ -309,7 +311,7 @@ Default value: $cockroachdb::params::install_path
 
 Data type: `Optional[String]`
 
-
+Name of the package to install.
 
 Default value: $cockroachdb::params::package_name
 
@@ -317,7 +319,7 @@ Default value: $cockroachdb::params::package_name
 
 Data type: `String`
 
-
+Version number and linux distribution name.
 
 Default value: $cockroachdb::params::package_ensure
 
@@ -325,7 +327,7 @@ Default value: $cockroachdb::params::package_ensure
 
 Data type: `Optional[String]`
 
-
+Base repository URL.
 
 Default value: $cockroachdb::params::repository_url
 
@@ -333,7 +335,7 @@ Default value: $cockroachdb::params::repository_url
 
 Data type: `Optional[String]`
 
-
+Archive path of the binary file in the base repository.
 
 Default value: $cockroachdb::params::archive_name
 
@@ -341,7 +343,7 @@ Default value: $cockroachdb::params::archive_name
 
 Data type: `Optional[String]`
 
-
+Full binary package source.
 
 Default value: $cockroachdb::params::cockroachdb_package_source
 

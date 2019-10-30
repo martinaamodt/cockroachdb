@@ -1,7 +1,37 @@
-# @summary Install the cockroachdb client
+#
+#
+# @summary
+#   Install the cockroachdb client
+#
 #
 # @example
 #   include cockroachdb::client
+#
+# @param workingdirectory
+#   Location of where the working directory will be created.
+#   If the parameter is not defined it will be created in "/var/lib/cockroach".
+#
+# @param dependencies
+#   Consists of dependencies 'tar' and 'wget' by default. Failing to include these dependencies while defining
+#   this parameter yourself may result in dependency issues.
+#
+# @param install_path
+#   Location where the program binary file is to be located.
+#
+# @param package_name
+#   Name of the package to install.
+#
+# @param package_ensure
+#   Version number and linux distribution name.
+#
+# @param repository_url
+#   Base repository URL.
+#
+# @param archive_name
+#   Archive path of the binary file in the base repository.
+#
+# @param cockroachdb_package_source
+#   Full binary package source.
 #
 class cockroachdb::client (
   Optional[Stdlib::Absolutepath] $workingdirectory = $cockroachdb::params::workingdirectory,
