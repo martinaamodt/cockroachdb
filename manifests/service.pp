@@ -38,5 +38,6 @@ class cockroachdb::service {
   }
   service { 'cockroachdb':
     ensure => 'running',
+    enable => true,
   }
 }
