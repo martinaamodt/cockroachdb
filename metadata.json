@@ -19,12 +19,14 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
+        "8",
         "9"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
+        "16.04",
         "18.04"
       ]
     }
