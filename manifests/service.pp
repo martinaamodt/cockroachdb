@@ -27,8 +27,8 @@ class cockroachdb::service {
     'locality'         => $cockroachdb::locality,
     'secure_mode'      => $cockroachdb::secure_mode,
     'certs_dir'        => $cockroachdb::certs_dir,
-    'dns_mode'         => $cockroachdb::params::dns_mode,
-    'dns_mode_custom'  => $cockroachdb::params::dns_mode_custom,
+    'dns_mode'         => $cockroachdb::dns_mode,
+    'dns_mode_custom'  => $cockroachdb::dns_mode_custom,
   }
 
   file { "${cockroachdb::servicepath}/cockroachdb.service":
