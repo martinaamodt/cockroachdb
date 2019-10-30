@@ -53,13 +53,13 @@
 #   Sets the user/group that the processes are executed as.
 #
 # @param node1ip
-#   Sets the ip-address for node one.
+#   Sets the ip-address for node one. Set to localhost when in single node mode.
 #
 # @param node2ip
-#   Sets the ip-address for node two.
+#   Sets the ip-address for node two. Skip for single node mode.
 #
 # @param node3ip
-#   Sets the ip-address for node three.
+#   Sets the ip-address for node three. Skip for single node mode.
 #
 # @param install_path
 #   Location where the program binary file is to be located.
@@ -110,8 +110,8 @@ class cockroachdb (
   Optional[String] $syslogidentifier                                  = $cockroachdb::params::syslogidentifier,
   Optional[String] $user                                              = $cockroachdb::params::user,
   String $node1ip                                                     = $cockroachdb::params::node1ip,
-  String $node2ip                                                     = $cockroachdb::params::node2ip,
-  String $node3ip                                                     = $cockroachdb::params::node3ip,
+  Optional[String] $node2ip                                           = $cockroachdb::params::node2ip,
+  Optional[String] $node3ip                                           = $cockroachdb::params::node3ip,
   Optional[String] $additional_params                                 = $cockroachdb::params::additional_params,
   Boolean $secure_mode                                                = $cockroachdb::params::secure_mode,
   Optional[Array[String, 1]] $locality                                = $cockroachdb::params::locality,
