@@ -209,7 +209,7 @@ Archive path of the binary file in the base repository.
 
 Default value: $cockroachdb::params::archive_name
 
-##### `cockroach_archive_source`
+##### `cockroachdb_package_source`
 
 Data type: `Optional[String]`
 
