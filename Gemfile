@@ -30,8 +30,6 @@ group :development do
   gem "puppet-module-win-dev-r#{minor_version}", '~> 0.3',                     require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "github_changelog_generator", '1.14.3',                                  require: false
   gem 'puppet-strings',                                                        require: false
-  gem 'puppet_litmus',                                                         require: false
-  gem 'serverspec',                                                            require: false
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
