@@ -7,6 +7,7 @@
 
 * [`cockroachdb`](#cockroachdb): Recives parameters from the user and initializes the cockroach::install and cockroach::config
 classes.
+* [`cockroachdb::client`](#cockroachdbclient): Install the cockroachdb client
 * [`cockroachdb::config`](#cockroachdbconfig): This class is called from the cockroachdb class to configure the program.
 * [`cockroachdb::install`](#cockroachdbinstall): This class is called from the the cockroachdb class for installation.
 * [`cockroachdb::params`](#cockroachdbparams): Default values for cockroachdb module.
@@ -148,23 +149,23 @@ Default value: $cockroachdb::params::user
 
 Data type: `String`
 
-Sets the ip-address for node one.
+Sets the ip-address for node one. Set to localhost when in single node mode.
 
 Default value: $cockroachdb::params::node1ip
 
 ##### `node2ip`
 
-Data type: `String`
+Data type: `Optional[String]`
 
-Sets the ip-address for node two.
+Sets the ip-address for node two. Skip for single node mode.
 
 Default value: $cockroachdb::params::node2ip
 
 ##### `node3ip`
 
-Data type: `String`
+Data type: `Optional[String]`
 
-Sets the ip-address for node three.
+Sets the ip-address for node three. Skip for single node mode.
 
 Default value: $cockroachdb::params::node3ip
 
@@ -208,7 +209,7 @@ Archive path of the binary file in the base repository.
 
 Default value: $cockroachdb::params::archive_name
 
-##### `cockroach_archive_source`
+##### `cockroachdb_package_source`
 
 Data type: `Optional[String]`
 
@@ -263,6 +264,88 @@ Data type: `Optional[String]`
 Custom fact used to identify nodes. Can be any valid facter fact, like custom facts.
 
 Default value: $cockroachdb::params::dns_mode_custom
+
+### cockroachdb::client
+
+Install the cockroachdb client
+
+#### Examples
+
+##### 
+
+```puppet
+include cockroachdb::client
+```
+
+#### Parameters
+
+The following parameters are available in the `cockroachdb::client` class.
+
+##### `workingdirectory`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+Location of where the working directory will be created.
+If the parameter is not defined it will be created in "/var/lib/cockroach".
+
+Default value: $cockroachdb::params::workingdirectory
+
+##### `dependencies`
+
+Data type: `Optional[Tuple]`
+
+Consists of dependencies 'tar' and 'wget' by default. Failing to include these dependencies while defining
+this parameter yourself may result in dependency issues.
+
+Default value: $cockroachdb::params::dependencies
+
+##### `install_path`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+Location where the program binary file is to be located.
+
+Default value: $cockroachdb::params::install_path
+
+##### `package_name`
+
+Data type: `Optional[String]`
+
+Name of the package to install.
+
+Default value: $cockroachdb::params::package_name
+
+##### `package_ensure`
+
+Data type: `String`
+
+Version number and linux distribution name.
+
+Default value: $cockroachdb::params::package_ensure
+
+##### `repository_url`
+
+Data type: `Optional[String]`
+
+Base repository URL.
+
+Default value: $cockroachdb::params::repository_url
+
+##### `archive_name`
+
+Data type: `Optional[String]`
+
+Archive path of the binary file in the base repository.
+
+Default value: $cockroachdb::params::archive_name
+
+##### `cockroachdb_package_source`
+
+Data type: `Optional[String]`
+
+Full binary package source.
+
+Default value: $cockroachdb::params::cockroachdb_package_source
 
 ### cockroachdb::config
 

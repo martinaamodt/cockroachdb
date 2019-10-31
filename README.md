@@ -61,6 +61,9 @@ class { 'cockroachdb':
   certs_dir   => '/root/certs',
 }
 ```
+**Client**
+To just install the cockroach client and not run it as a server, just add
+`include cockroachdb::client` to your Puppet manifest.
 
 ## Usage
 **Specifying different cockroachdb version:**

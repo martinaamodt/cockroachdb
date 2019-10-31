@@ -1,0 +1,42 @@
+<%- | $install_path,
+  $package_name,
+  $description,
+  $workingdirectory,
+  $node1ip,
+  $cache,
+  $maxsqlmemory,
+  $timeoutstopsec,
+  $restart,
+  $restartsec,
+  $standardoutput,
+  $standarderror,
+  $syslogidentifier,
+  $user,
+  $additionalparams,
+  $secure_mode,
+  $certs_dir,
+| -%>
+
+[Unit]
+Description = <%= $description %>
+Requires = network.target
+
+[Service]
+Type = notify
+WorkingDirectory = <%= $workingdirectory %>
+ExecStart = <%= "$install_path/$package_name" %> start <% unless $secure_mode == true { -%>--insecure <% } -%>
+ <%- if $secure_mode { -%>--certs-dir=<%= "$certs_dir" %><% } -%>
+--listen-addr=localhost --cache=<%= $cache -%>
+ --max-sql-memory=<%= $maxsqlmemory -%>
+ <%= $additionalparams %>
+TimeoutStopSec = <%= $timeoutstopsec %>
+Restart = <%= $restart %>
+RestartSec = <%= $restartsec %>
+RestartPreventExitStatus=0
+StandardOutput = <%= $standardoutput %>
+StandardError = <%= $standarderror %>
+SyslogIdentifier = <%= $syslogidentifier %>
+User = <%= $user %>
+
+[Install]
+WantedBy = default.target
