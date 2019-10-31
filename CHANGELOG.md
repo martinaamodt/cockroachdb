@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.1.0](https://github.com/martinaamodt/cockroachdb/tree/v1.1.0) (2019-10-31)
+[Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v1.0.1...v1.1.0)
+
+**Merged pull requests:**
+
+- Acceptance testing and single node mode [\#99](https://github.com/martinaamodt/cockroachdb/pull/99) ([Hexoplon](https://github.com/Hexoplon))
+- set service enable equal to true [\#98](https://github.com/martinaamodt/cockroachdb/pull/98) ([Hexoplon](https://github.com/Hexoplon))
+- Fixed param name, install referenced wrong variable name [\#97](https://github.com/martinaamodt/cockroachdb/pull/97) ([Hexoplon](https://github.com/Hexoplon))
+- client class to install cockroachdb client [\#96](https://github.com/martinaamodt/cockroachdb/pull/96) ([Hexoplon](https://github.com/Hexoplon))
+
 ## [v1.0.1](https://github.com/martinaamodt/cockroachdb/tree/v1.0.1) (2019-10-29)
 [Full Changelog](https://github.com/martinaamodt/cockroachdb/compare/v1.0.0...v1.0.1)
 
