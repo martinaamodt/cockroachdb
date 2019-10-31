@@ -32,9 +32,25 @@ If your Github account is linked to travis-ci and you fork the repo, the pipelin
 To run tests locally, you must first install any prerequisites. This can be done by running:
 `bundle install` while in the repository. Make sure to have the `bundler` gem install.
 
-To validate syntax, run: `pdk validate`
+To validate syntax, run: `pdk validate --parallel`
 
 To run unit tests, run: `pdk test unit`
+
+## Litmus Acceptance Tests
+To run the acceptance tests manually, ensure that the `puppet_litmus` gem is installed, as well as docker, and then run the following commands:
+```shell script
+# Provision machines based on provision.yaml definitio
+bundle exec rake 'litmus:provision_list[travis_deb]'
+bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='*'
+# Install version 6 of the puppet agent to the provisioned targets
+bundle exec rake 'litmus:install_agent[puppet6]'
+# Install the cockroachdb module to the targets
+bundle exec rake litmus:install_module
+# Run the acceptance on all targets in parallel
+bundle exec rake litmus:acceptance:parallel
+# Unprovision the targets
+bundle exec rake litmus:tear_down
+```
 
 # Release Process
 1. Bump version in metadata.json

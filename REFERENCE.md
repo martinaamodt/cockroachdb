@@ -149,23 +149,23 @@ Default value: $cockroachdb::params::user
 
 Data type: `String`
 
-Sets the ip-address for node one.
+Sets the ip-address for node one. Set to localhost when in single node mode.
 
 Default value: $cockroachdb::params::node1ip
 
 ##### `node2ip`
 
-Data type: `String`
+Data type: `Optional[String]`
 
-Sets the ip-address for node two.
+Sets the ip-address for node two. Skip for single node mode.
 
 Default value: $cockroachdb::params::node2ip
 
 ##### `node3ip`
 
-Data type: `String`
+Data type: `Optional[String]`
 
-Sets the ip-address for node three.
+Sets the ip-address for node three. Skip for single node mode.
 
 Default value: $cockroachdb::params::node3ip
 
