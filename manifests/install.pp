@@ -7,7 +7,6 @@
 class cockroachdb::install {
   package { $cockroachdb::dependencies:
     ensure   => installed,
-    provider => apt,
     before   => Archive[$cockroachdb::archive_name],
   }
 
