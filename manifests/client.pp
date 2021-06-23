@@ -46,7 +46,6 @@ class cockroachdb::client (
 ) inherits cockroachdb::params {
   package { $dependencies:
     ensure   => installed,
-    provider => apt,
     before   => Archive[$archive_name],
   }
 
